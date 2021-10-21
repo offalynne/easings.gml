@@ -123,8 +123,8 @@ global.___EASING.LIST[EASE.INOUT_ELASTIC] = function(z)
         : (z == 1
             ? 1
             : (z < 0.5
-                ? -(power(2, 20 * z - 10) * sin((20 * z - 11.125) * global.___EASING_C5)) / 2
-                : (power(2, -20 * z + 10) * sin((20 * z - 11.125) * global.___EASING_C5)) / 2 + 1)));
+                ? -(power(2,  20 * z - 10) * sin((20 * z - 11.125) * global.___EASING_C5)) / 2
+                :  (power(2, -20 * z + 10) * sin((20 * z - 11.125) * global.___EASING_C5)) / 2 + 1)));
 };
 
 enum EASE 
