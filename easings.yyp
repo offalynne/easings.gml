@@ -1,0 +1,35 @@
+{
+  "resources": [
+    {"id":{"name":"easings","path":"scripts/easings/easings.yy",},"order":3,},
+    {"id":{"name":"ob_test","path":"objects/ob_test/ob_test.yy",},"order":0,},
+    {"id":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},"order":1,},
+  ],
+  "Options": [],
+  "isDnDProject": false,
+  "isEcma": false,
+  "tutorialPath": "",
+  "configs": {
+    "name": "Default",
+    "children": [],
+  },
+  "RoomOrderNodes": [
+    {"roomId":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
+  ],
+  "Folders": [
+    {"folderPath":"folders/tests.yy","order":4,"resourceVersion":"1.0","name":"tests","tags":[],"resourceType":"GMFolder",},
+  ],
+  "AudioGroups": [
+    {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
+  ],
+  "TextureGroups": [
+    {"isScaled":true,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":-1,"resourceVersion":"1.3","name":"Default","resourceType":"GMTextureGroup",},
+  ],
+  "IncludedFiles": [],
+  "MetaData": {
+    "IDEVersion": "2.3.5.589",
+  },
+  "resourceVersion": "1.4",
+  "name": "easings",
+  "tags": [],
+  "resourceType": "GMProject",
+}
