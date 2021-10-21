@@ -78,7 +78,7 @@ global.___EASING.LIST[   EASE.IN_CIRC] = function(z){ return 1 - sqrt(1 - power(
 global.___EASING.LIST[  EASE.OUT_CIRC] = function(z){ return     sqrt(1 - power((z - 1), 2)); };
 global.___EASING.LIST[EASE.INOUT_CIRC] = function(z)
 {
-	return z < 0.50000
+	return z < 0.5
 		? (1 - sqrt(1 - power(   2 * z,       2)))     / 2
 		: (    sqrt(1 - power(((-2 * z) + 2), 2)) + 1) / 2;
 };
