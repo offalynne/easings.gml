@@ -1,4 +1,4 @@
-// easings.gml, @offalynne 2001
+// easings.gml, @offalynne 2021
 //
 // refs
 //   wikipedia.org/wiki/Smoothstep
