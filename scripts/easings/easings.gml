@@ -8,7 +8,7 @@ global.___EASING = {};
 global.___EASING.LIST = array_create(EASE.NUMBER);
 
 function ease(_x, _ease_type = EASE.LINEAR)
-{     
+{
     return global.___EASING.LIST[_ease_type](clamp(_x, 0, 1));
 }
 
@@ -45,9 +45,9 @@ global.___EASING.LIST[ EASE.IN_EXPO] = function(z){ return z == 0 ? 0 :     powe
 global.___EASING.LIST[EASE.OUT_EXPO] = function(z){ return z == 1 ? 1 : 1 - power(2, -10 * z);     };
 
 global.___EASING.LIST[EASE.INOUT_EXPO] = function(z)
-{ 
+{
     return (z == 0
-        ? 0 
+        ? 0
         : (z == 1
             ? 1
             : (z < 0.5
@@ -59,7 +59,7 @@ global.___EASING.LIST[EASE.INOUT_EXPO] = function(z)
 #macro ___EASING_N1 7.5625
 
 global.___EASING.LIST[EASE.OUT_BOUNCE] = function(z)
-{    
+{
     if      (z < 1   / ___EASING_D1) {                              return ___EASING_N1 * z * z;           }
     else if (z < 2   / ___EASING_D1) { z -= (1.5   / ___EASING_D1); return ___EASING_N1 * z * z + .75;     }
     else if (z < 2.5 / ___EASING_D1) { z -= (2.25  / ___EASING_D1); return ___EASING_N1 * z * z + .9375;   }
@@ -78,9 +78,9 @@ global.___EASING.LIST[   EASE.IN_CIRC] = function(z){ return 1 - sqrt(1 - power(
 global.___EASING.LIST[  EASE.OUT_CIRC] = function(z){ return     sqrt(1 - power((z - 1), 2)); };
 global.___EASING.LIST[EASE.INOUT_CIRC] = function(z)
 {
-	return z < 0.5
-		? (1 - sqrt(1 - power(   2 * z,       2)))     / 2
-		: (    sqrt(1 - power(((-2 * z) + 2), 2)) + 1) / 2;
+    return z < 0.5
+        ? (1 - sqrt(1 - power(   2 * z,       2)))     / 2
+        : (    sqrt(1 - power(((-2 * z) + 2), 2)) + 1) / 2;
 };
 
 #macro ___EASING_C1 1.70158
@@ -127,12 +127,12 @@ global.___EASING.LIST[EASE.INOUT_ELASTIC] = function(z)
                 :  (power(2, -20 * z + 10) * sin((20 * z - 11.125) * global.___EASING_C5)) / 2 + 1)));
 };
 
-enum EASE 
+enum EASE
 {
-   LINEAR, 
-   
+   LINEAR,
+
    SMOOTHSTEP, SMOOTHERSTEP, INVERSE_SMOOTHSTEP,
-   
+
       IN_QUAD,    IN_QUART,    IN_QUINT,    IN_CUBIC,    IN_SINE,    IN_EXPO,    IN_ELASTIC,    IN_BOUNCE,    IN_CIRC,    IN_BACK,
      OUT_QUAD,   OUT_QUART,   OUT_QUINT,   OUT_CUBIC,   OUT_SINE,   OUT_EXPO,   OUT_ELASTIC,   OUT_BOUNCE,   OUT_CIRC,   OUT_BACK,
    INOUT_QUAD, INOUT_QUART, INOUT_QUINT, INOUT_CUBIC, INOUT_SINE, INOUT_EXPO, INOUT_ELASTIC, INOUT_BOUNCE, INOUT_CIRC, INOUT_BACK,
