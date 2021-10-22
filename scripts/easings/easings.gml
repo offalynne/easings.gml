@@ -2,7 +2,7 @@
 //
 // refs
 //   wikipedia.org/wiki/Smoothstep
-//   github_Com/ai/easings.net/blob/master/src/easings/easingsFunctions.ts
+//   github.com/ai/easings.net/blob/master/src/easings/easingsFunctions.ts
 
 global.___EASING = {};
 global.___EASING.LIST = array_create(EASE.NUMBER);
