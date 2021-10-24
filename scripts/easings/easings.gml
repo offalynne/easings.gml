@@ -42,7 +42,7 @@ global.___EASING.LIST[  EASE.OUT_SINE] = function(z){ return     sin((z * pi)   
 global.___EASING.LIST[EASE.INOUT_SINE] = function(z){ return   -(cos( z * pi) - 1) / 2;  };
 
 global.___EASING.LIST[ EASE.IN_EXPO] = function(z){ return z == 0.0 ? 0 :     power(2,  10 * z - 10); };
-global.___EASING.LIST[EASE.OUT_EXPO] = function(z){ return z == 1.0 ? 1 : 1 - power(2, -10 * z);     };
+global.___EASING.LIST[EASE.OUT_EXPO] = function(z){ return z == 1.0 ? 1 : 1 - power(2, -10 * z);      };
 
 global.___EASING.LIST[EASE.INOUT_EXPO] = function(z)
 {
