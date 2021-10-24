@@ -16,7 +16,7 @@ function draw_test()
     var _interval = 5; // animation duration in seconds
 
     _x += (delta_time / (1000000 * _interval)) * _sign;    
-    if (_x > 1)
+    if (_x > 1.0)
     {
         _x    =  1 - (_x mod 1);
         _sign = -1;
