@@ -41,14 +41,14 @@ global.___EASING.LIST[   EASE.IN_SINE] = function(z){ return 1 - cos((z * pi)   
 global.___EASING.LIST[  EASE.OUT_SINE] = function(z){ return     sin((z * pi)      / 2); };
 global.___EASING.LIST[EASE.INOUT_SINE] = function(z){ return   -(cos( z * pi) - 1) / 2;  };
 
-global.___EASING.LIST[ EASE.IN_EXPO] = function(z){ return z == 0 ? 0 :     power(2,  10 * z - 10); };
-global.___EASING.LIST[EASE.OUT_EXPO] = function(z){ return z == 1 ? 1 : 1 - power(2, -10 * z);     };
+global.___EASING.LIST[ EASE.IN_EXPO] = function(z){ return z == 0.0 ? 0 :     power(2,  10 * z - 10); };
+global.___EASING.LIST[EASE.OUT_EXPO] = function(z){ return z == 1.0 ? 1 : 1 - power(2, -10 * z);     };
 
 global.___EASING.LIST[EASE.INOUT_EXPO] = function(z)
 {
-    return (z == 0
+    return (z == 0.0
         ? 0
-        : (z == 1
+        : (z == 1.0
             ? 1
             : (z < 0.5
                 ? power(2, 20 * z - 10) / 2
@@ -100,27 +100,27 @@ global.___EASING.LIST[EASE.INOUT_BACK] = function(z)
 
 global.___EASING.LIST[EASE.IN_ELASTIC] = function(z)
 {
-    return (z == 0
+    return (z == 0.0
         ? 0
-        : (z == 1
+        : (z == 1.0
             ? 1
             : -power(2, 10 * z - 10) * sin((z * 10 - 10.75) * global.___EASING_C4)));
 };
 
 global.___EASING.LIST[EASE.OUT_ELASTIC] = function(z)
 {
-    return (z == 0
+    return (z == 0.0
         ? 0
-        : (z == 1
+        : (z == 1.0
             ? 1
             : power(2, -10 * z) * sin((z * 10 - 0.75) * global.___EASING_C4) + 1));
 };
 
 global.___EASING.LIST[EASE.INOUT_ELASTIC] = function(z)
 {
-    return (z == 0
+    return (z == 0.0
         ? 0
-        : (z == 1
+        : (z == 1.0
             ? 1
             : (z < 0.5
                 ? -(power(2,  20 * z - 10) * sin((20 * z - 11.125) * global.___EASING_C5)) / 2
