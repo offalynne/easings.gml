@@ -61,9 +61,9 @@ with (global.___EASING)
     LIST[EASE.OUT_BOUNCE] = function(z)
     {
              if (z < 1   / ___EASING_D1) {                              return ___EASING_N1 * z * z;           }
-        else if (z < 2   / ___EASING_D1) { z -= (1.5   / ___EASING_D1); return ___EASING_N1 * z * z + .75;     }
-        else if (z < 2.5 / ___EASING_D1) { z -= (2.25  / ___EASING_D1); return ___EASING_N1 * z * z + .9375;   }
-        else                             { z -= (2.625 / ___EASING_D1); return ___EASING_N1 * z * z + .984375; }
+        else if (z < 2   / ___EASING_D1) { z -= (1.5   / ___EASING_D1); return ___EASING_N1 * z * z + 0.75;     }
+        else if (z < 2.5 / ___EASING_D1) { z -= (2.25  / ___EASING_D1); return ___EASING_N1 * z * z + 0.9375;   }
+        else                             { z -= (2.625 / ___EASING_D1); return ___EASING_N1 * z * z + 0.984375; }
     };
 
         LIST[   EASE.IN_BOUNCE] = function(z){ return 1 - global.___EASING.LIST[EASE.OUT_BOUNCE](1 - z); };
