@@ -114,8 +114,7 @@ with (global.___EASING)
     LIST[EASE.INOUT_ELASTIC] = function(z)
     {
         if (z == 0.0) return 0;
-        if (z == 1.0) return 1.0;
-        
+        if (z == 1.0) return 1.0;        
         if (z <  0.5) return -(power(2,  20 * z - 10) * sin((20 * z - 11.125) * global.___EASING_C5)) / 2
                       return  (power(2, -20 * z + 10) * sin((20 * z - 11.125) * global.___EASING_C5)) / 2 + 1)));
     };
