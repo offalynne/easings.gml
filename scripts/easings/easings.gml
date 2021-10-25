@@ -48,13 +48,11 @@ with (global.___EASING)
 
     LIST[EASE.INOUT_EXPO] = function(z)
     {
-        return (z == 0.0
-            ? 0
-            : (z == 1.0
-                ? 1
-                : (z < 0.5
-                    ? power(2, 20 * z - 10) / 2
-                    : (2 - power(2, -20 * z + 10)) / 2)));
+        if (z == 0.0) return 0;
+        if (z == 1.0) return 1;
+        
+        if (z <  0.5) return      power(2,  20 * z - 10)  / 2;
+                      return (2 - power(2, -20 * z + 10)) / 2)));
     };
 
     #macro ___EASING_D1 2.75
@@ -62,8 +60,8 @@ with (global.___EASING)
 
     LIST[EASE.OUT_BOUNCE] = function(z)
     {
-        if      (z < 1   / ___EASING_D1) {                              return ___EASING_N1 * z * z;           }
-        else if (z < 2   / ___EASING_D1) { z -= (1.5   / ___EASING_D1); return ___EASING_N1 * z * z + .75;     }
+        if      (z < 1.0 / ___EASING_D1) {                              return ___EASING_N1 * z * z;           }
+        else if (z < 2.0 / ___EASING_D1) { z -= (1.5   / ___EASING_D1); return ___EASING_N1 * z * z + .75;     }
         else if (z < 2.5 / ___EASING_D1) { z -= (2.25  / ___EASING_D1); return ___EASING_N1 * z * z + .9375;   }
         else                             { z -= (2.625 / ___EASING_D1); return ___EASING_N1 * z * z + .984375; }
     };
@@ -71,9 +69,8 @@ with (global.___EASING)
         LIST[   EASE.IN_BOUNCE] = function(z){ return 1 - global.___EASING.LIST[EASE.OUT_BOUNCE](1 - z); };
         LIST[EASE.INOUT_BOUNCE] = function(z)
     {
-        return z < 0.5
-            ? (1 - global.___EASING.LIST[EASE.OUT_BOUNCE](1 - 2 * z)) / 2
-            : (1 + global.___EASING.LIST[EASE.OUT_BOUNCE](2 * z - 1)) / 2;
+        if (z < 0.5) return (1 - global.___EASING.LIST[EASE.OUT_BOUNCE](1 - 2 * z)) / 2
+                     return (1 + global.___EASING.LIST[EASE.OUT_BOUNCE](2 * z - 1)) / 2;
     };
 
         LIST[   EASE.IN_CIRC] = function(z){ return 1 - sqrt(1 - power( z,      2)); };
