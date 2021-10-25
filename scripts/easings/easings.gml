@@ -68,10 +68,10 @@ with (global.___EASING)
 
         LIST[   EASE.IN_BOUNCE] = function(z){ return 1 - global.___EASING.LIST[EASE.OUT_BOUNCE](1 - z); };
         LIST[EASE.INOUT_BOUNCE] = function(z)
-    {
-        if (z < 0.5) return (1 - global.___EASING.LIST[EASE.OUT_BOUNCE](1 - 2 * z)) / 2
-                     return (1 + global.___EASING.LIST[EASE.OUT_BOUNCE](2 * z - 1)) / 2;
-    };
+        {
+            if (z < 0.5) return (1 - global.___EASING.LIST[EASE.OUT_BOUNCE](1 - 2 * z)) / 2
+                         return (1 + global.___EASING.LIST[EASE.OUT_BOUNCE](2 * z - 1)) / 2;
+        };
 
         LIST[   EASE.IN_CIRC] = function(z){ return 1 - sqrt(1 - power( z,      2)); };
         LIST[  EASE.OUT_CIRC] = function(z){ return     sqrt(1 - power((z - 1), 2)); };
