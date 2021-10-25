@@ -79,10 +79,10 @@ with (global.___EASING)
         LIST[   EASE.IN_CIRC] = function(z){ return 1 - sqrt(1 - power( z,      2)); };
         LIST[  EASE.OUT_CIRC] = function(z){ return     sqrt(1 - power((z - 1), 2)); };
         LIST[EASE.INOUT_CIRC] = function(z)
-    {
-        if (z < 0.5) return (1 - sqrt(1 - power(   2 * z,       2)))     / 2
-                     return      sqrt(1 - power(((-2 * z) + 2), 2)) + 1) / 2;
-    };
+        {
+            if (z < 0.5) return (1 - sqrt(1 - power(   2 * z,       2)))     / 2
+                         return      sqrt(1 - power(((-2 * z) + 2), 2)) + 1) / 2;
+        };
 
     #macro ___EASING_C1 1.70158
     C2 = ___EASING_C1 * 1.525;
@@ -90,7 +90,7 @@ with (global.___EASING)
     C4 = (2 * pi) / 3;
     C5 = (2 * pi) / 4.;
 
-    LIST[   EASE.IN_BACK] = function(z){ return     global.___EASING_C3 * z * z * z       - ___EASING_C1 * z * z; };
+    LIST[   EASE.IN_BACK] = function(z){ return     global.___EASING_C3 * power(z    , 3) - ___EASING_C1 * power(z    , 2); };
     LIST[  EASE.OUT_BACK] = function(z){ return 1 + global.___EASING_C3 * power(z - 1, 3) + ___EASING_C1 * power(z - 1, 2); };
     LIST[EASE.INOUT_BACK] = function(z)
     {
@@ -102,6 +102,7 @@ with (global.___EASING)
     {
         if (z == 0.0) return 0;
         if (z == 1.0) return 1;
+        
         return -power(2, 10 * z - 10) * sin((z * 10 - 10.75) * global.___EASING_C4)));
     };
 
@@ -109,6 +110,7 @@ with (global.___EASING)
     {
         if (z == 0.0) return 0;
         if (z == 1.0) return 1;
+        
         return power(2, -10 * z) * sin((z * 10 - 0.75) * global.___EASING_C4) + 1));
     };
 
@@ -116,6 +118,7 @@ with (global.___EASING)
     {
         if (z == 0.0) return 0;
         if (z == 1.0) return 1.0;
+        
         if (z <  0.5) return -(power(2,  20 * z - 10) * sin((20 * z - 11.125) * global.___EASING_C5)) / 2
                       return  (power(2, -20 * z + 10) * sin((20 * z - 11.125) * global.___EASING_C5)) / 2 + 1)));
     };
