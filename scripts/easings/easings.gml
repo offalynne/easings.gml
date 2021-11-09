@@ -51,8 +51,8 @@ with (global.___EASING)
         if (z == 0.0) return 0;
         if (z == 1.0) return 1;
         
-        if (z <  0.5) return      power(2,  20 * z - 10)  / 2;
-                      return (2 - power(2, -20 * z + 10)) / 2)));
+        if (z <  0.5) return      power(2,  20 * z - 10)  / 2
+                      return (2 - power(2, -20 * z + 10)) / 2;
     };
 
     #macro ___EASING_D1 2.75
@@ -77,8 +77,8 @@ with (global.___EASING)
         LIST[  EASE.OUT_CIRC] = function(z){ return     sqrt(1 - power((z - 1), 2)); };
         LIST[EASE.INOUT_CIRC] = function(z)
         {
-            if (z < 0.5) return (1 - sqrt(1 - power(   2 * z,       2)))     / 2
-                         return      sqrt(1 - power(((-2 * z) + 2), 2)) + 1) / 2;
+            if (z < 0.5) return (1 - sqrt(1 - power(   2 * z,       2)))    / 2
+                         return      sqrt(1 - power(((-2 * z) + 2), 2) + 1) / 2;
         };
 
     #macro ___EASING_C1 1.70158
@@ -101,7 +101,7 @@ with (global.___EASING)
         if (z == 0.0) return 0;
         if (z == 1.0) return 1;
         
-        return -power(2, 10 * z - 10) * sin((z * 10 - 10.75) * global.___EASING.C4)));
+        return -power(2, 10 * z - 10) * sin((z * 10 - 10.75) * global.___EASING.C4);
     };
 
     LIST[EASE.OUT_ELASTIC] = function(z)
@@ -109,7 +109,7 @@ with (global.___EASING)
         if (z == 0.0) return 0;
         if (z == 1.0) return 1;
         
-        return power(2, -10 * z) * sin((z * 10 - 0.75) * global.___EASING.C4) + 1));
+        return power(2, -10 * z) * sin((z * 10 - 0.75) * global.___EASING.C4) + 1;
     };
 
     LIST[EASE.INOUT_ELASTIC] = function(z)
@@ -117,14 +117,13 @@ with (global.___EASING)
         if (z == 0.0) return 0;
         if (z == 1.0) return 1.0;        
         if (z <  0.5) return -(power(2,  20 * z - 10) * sin((20 * z - 11.125) * global.___EASING.C5)) / 2
-                      return  (power(2, -20 * z + 10) * sin((20 * z - 11.125) * global.___EASING.C5)) / 2 + 1)));
+                      return   power(2, -20 * z + 10) * sin((20 * z - 11.125) * global.___EASING.C5)  / 2 + 1;
     };
 }
 
 enum EASE
 {
    LINEAR,
-
    SMOOTHSTEP, SMOOTHERSTEP, INVERSE_SMOOTHSTEP,
 
       IN_QUAD,    IN_QUART,    IN_QUINT,    IN_CUBIC,    IN_SINE,    IN_EXPO,    IN_ELASTIC,    IN_BOUNCE,    IN_CIRC,    IN_BACK,
