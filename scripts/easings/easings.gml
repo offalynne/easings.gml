@@ -50,7 +50,6 @@ with (global.___EASING)
     {
         if (z == 0.0) return 0;
         if (z == 1.0) return 1;
-        
         if (z <  0.5) return      power(2,  20 * z - 10)  / 2
                       return (2 - power(2, -20 * z + 10)) / 2;
     };
@@ -60,10 +59,10 @@ with (global.___EASING)
 
     LIST[EASE.OUT_BOUNCE] = function(z)
     {
-             if (z < 1   / ___EASING_D1) {                              return ___EASING_N1 * z * z;           }
+             if (z < 1   / ___EASING_D1) {                              return ___EASING_N1 * z * z;            }
         else if (z < 2   / ___EASING_D1) { z -= (1.5   / ___EASING_D1); return ___EASING_N1 * z * z + 0.75;     }
         else if (z < 2.5 / ___EASING_D1) { z -= (2.25  / ___EASING_D1); return ___EASING_N1 * z * z + 0.9375;   }
-        else                             { z -= (2.625 / ___EASING_D1); return ___EASING_N1 * z * z + 0.984375; }
+                                           z -= (2.625 / ___EASING_D1); return ___EASING_N1 * z * z + 0.984375;
     };
 
         LIST[   EASE.IN_BOUNCE] = function(z){ return 1 - global.___EASING.LIST[EASE.OUT_BOUNCE](1 - z); };
@@ -115,7 +114,8 @@ with (global.___EASING)
     LIST[EASE.INOUT_ELASTIC] = function(z)
     {
         if (z == 0.0) return 0;
-        if (z == 1.0) return 1.0;        
+        if (z == 1.0) return 1;
+        
         if (z <  0.5) return -(power(2,  20 * z - 10) * sin((20 * z - 11.125) * global.___EASING.C5)) / 2
                       return   power(2, -20 * z + 10) * sin((20 * z - 11.125) * global.___EASING.C5)  / 2 + 1;
     };
