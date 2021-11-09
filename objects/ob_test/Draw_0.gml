@@ -1,5 +1,9 @@
 function draw_test()
-{   
+{
+    // config
+    var _animation_interval = 5; // in seconds
+    
+    // init
     static _x    = 0;
     static _sign = 1;
     static _ease_names = [
@@ -13,9 +17,8 @@ function draw_test()
      "INOUT_QUAD","INOUT_QUART","INOUT_QUINT","INOUT_CUBIC","INOUT_SINE","INOUT_EXPO","INOUT_ELASTIC","INOUT_BOUNCE","INOUT_CIRC","INOUT_BACK",
     ];
 
-    var _interval = 5; // animation duration in seconds
-
-    _x += (delta_time / (1000000 * _interval)) * _sign;    
+    // animate
+    _x += (delta_time / (1000000 * _animation_interval)) * _sign;    
     if (_x > 1.0)
     {
         _x    =  1 - (_x mod 1);
@@ -27,16 +30,19 @@ function draw_test()
         _sign =   1;
     }
     
+    // draw setup
     var _i     = 0;
     var _pad   = 190;
     var _len   = EASE.NUMBER;
     var _bar   = room_height / _len;
     var _hover = floor((mouse_y / room_height) * _len);
         
+    // bg
     draw_set_color(0);
     draw_rectangle(0, 0, _pad, room_height, false);
     draw_rectangle(room_width - _pad, 0, room_width, room_height, false);
         
+    // fillbars
     repeat(_len)
     {
         // ease bar
