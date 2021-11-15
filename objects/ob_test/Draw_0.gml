@@ -6,16 +6,9 @@ function draw_test()
     // init
     static _x    = 0;
     static _sign = 1;
-    static _ease_names = [
-        "LINEAR",
-        "SMOOTHSTEP", 
-        "SMOOTHERSTEP", 
-        "INVERSE_SMOOTHSTEP",
-        
-        "IN_QUAD",   "IN_QUART",   "IN_QUINT",   "IN_CUBIC",   "IN_SINE",   "IN_EXPO",   "IN_ELASTIC",   "IN_BOUNCE",   "IN_CIRC",   "IN_BACK",
-       "OUT_QUAD",  "OUT_QUART",  "OUT_QUINT",  "OUT_CUBIC",  "OUT_SINE",  "OUT_EXPO",  "OUT_ELASTIC",  "OUT_BOUNCE",  "OUT_CIRC",  "OUT_BACK",
-     "INOUT_QUAD","INOUT_QUART","INOUT_QUINT","INOUT_CUBIC","INOUT_SINE","INOUT_EXPO","INOUT_ELASTIC","INOUT_BOUNCE","INOUT_CIRC","INOUT_BACK",
-    ];
+    static _ease_names = variable_struct_get_names(EASE);
+    
+    array_sort(_ease_names, false);
 
     // animate
     _x += (delta_time / (1000000 * _animation_interval)) * _sign;    
@@ -33,7 +26,7 @@ function draw_test()
     // draw setup
     var _i     = 0;
     var _pad   = 190;
-    var _len   = EASE.NUMBER;
+    var _len   = array_length(_ease_names);
     var _bar   = room_height / _len;
     var _hover = floor((mouse_y / room_height) * _len);
         
@@ -47,7 +40,7 @@ function draw_test()
     {
         // ease bar
         draw_set_color((_i == _hover) ? c_silver : c_dkgray);
-        draw_rectangle(_pad, _i * _bar, _pad + (room_width - _pad*2) * tween(0, 1, _x, _i), (_i + 1) * _bar, false);
+        draw_rectangle(_pad, _i * _bar, _pad + (room_width - _pad*2) * tween(0, 1, _x, _ease_names[_i]), (_i + 1) * _bar, false);
         
         // hover overlay
         draw_set_color(c_silver);
