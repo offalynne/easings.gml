@@ -12,7 +12,7 @@ tween
   argument: Start, End, Position, Easing type (Optional)
   returned: Number
 
-Easing types (Enum: EASE.*)
+Easing types (EASE.*)
   LINEAR (none)
   SMOOTHSTEP
   SMOOTHERSTEP
