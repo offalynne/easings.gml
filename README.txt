@@ -4,16 +4,16 @@ Ease and Tween for GMS2
 
 ease
   function: Eases number within unit interval
-  argument: Number, Easing type (Optional)
+  argument: Number, Easing (Optional)
   returned: Number
 
 tween
   function: Eases positional value
-  argument: Start, End, Position, Easing type (Optional)
+  argument: Start, End, Position, Easing (Optional)
   returned: Number
 
-Easing types (EASE.*)
-  LINEAR (none)
+Easings (EASE.*)
+  LINEAR
   SMOOTHSTEP
   SMOOTHERSTEP
   INVERSE_SMOOTHSTEP
