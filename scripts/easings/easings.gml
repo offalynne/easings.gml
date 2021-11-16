@@ -20,10 +20,14 @@ ___EASING_CONST =
     D1 : 2.75,
     N1 : 7.5625,
     C1 : 1.70158,
-    C2 : 1.70158 * 1.525,
-    C3 : 1.70158 + 1,
     C4 : (2 * pi) / 3,
     C5 : (2 * pi) / 4.5
+}
+
+with(___CONST)
+{
+    C2 = C1 * 1.525;
+    C3 = C1 + 1;
 }
 
 #macro EASE global.___EASING
@@ -63,18 +67,12 @@ ___EASING =
                       return (2 - power(2, -20 * z + 10)) / 2;
     },
 
-    IN_BOUNCE  : function(z){ return 1 - EASE.OUT_BOUNCE(1 - z); },
     OUT_BOUNCE : function(z)
     {
              if (z < 1   / ___CONST.D1)      {                        return ___CONST.N1 * z * z;            }
         else if (z < 2   / ___CONST.D1) { z -= (1.5   / ___CONST.D1); return ___CONST.N1 * z * z + 0.75;     }
         else if (z < 2.5 / ___CONST.D1) { z -= (2.25  / ___CONST.D1); return ___CONST.N1 * z * z + 0.9375;   }
                                           z -= (2.625 / ___CONST.D1); return ___CONST.N1 * z * z + 0.984375;
-    },
-    INOUT_BOUNCE : function(z)
-    {
-        if (z < 0.5) return (1 - EASE.OUT_BOUNCE(1 - 2 * z)) / 2
-                     return (1 + EASE.OUT_BOUNCE(2 * z - 1)) / 2;
     },
 
     IN_CIRC    : function(z){ return 1 - sqrt(1 - power( z,      2)); },
@@ -118,4 +116,11 @@ ___EASING =
                       return   power(2, -20 * z + 10) * sin((20 * z - 11.125) * ___CONST.C5)  / 2 + 1;
     }
 }
+
+EASE.IN_BOUNCE    = function(z){ return 1 - EASE.OUT_BOUNCE(1 - z); };
+EASE.INOUT_BOUNCE = function(z)
+                    {
+                        if (z < 0.5) return (1 - EASE.OUT_BOUNCE(1 - 2 * z)) / 2
+                                     return (1 + EASE.OUT_BOUNCE(2 * z - 1)) / 2;
+                    };
 
