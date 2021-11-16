@@ -1,18 +1,8 @@
 easings.gml
 
-Ease and Tween for GMS2
+Easing for GMS2
 
-ease
-  function: Eases number within unit interval
-  argument: Number, Easing type (Optional)
-  returned: Number
-
-tween
-  function: Eases positional value
-  argument: Start, End, Position, Easing type (Optional)
-  returned: Number
-
-Easing types (Enum: EASE.*)
+Easings (EASE.*)
   LINEAR (none)
   SMOOTHSTEP
   SMOOTHERSTEP
@@ -20,6 +10,20 @@ Easing types (Enum: EASE.*)
   IN_/​OUT_/​INOUT_*
     QUAD, CUBIC, QUART, QUINT, SINE, 
     EXPO, BOUNCE, CIRC, BACK, ELASTIC
+
+e.g. EASE.INOUT_ELASTIC(x)
+
+OR
+
+ease
+  function: Eases value within unit interval
+  argument: Number, Easing (Optional)
+  returned: Number
+
+tween
+  function: Eases positional value
+  argument: Start, End, Position, Easing (Optional)
+  returned: Number
     
 Reference
   wikipedia.org/wiki/Smoothstep
