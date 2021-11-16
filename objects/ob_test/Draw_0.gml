@@ -40,7 +40,7 @@ function draw_test()
     {
         // ease bar
         draw_set_color((_i == _hover) ? c_silver : c_dkgray);
-        draw_rectangle(_pad, _i * _bar, _pad + (room_width - _pad*2) * tween(0, 1, _x, _ease_names[_i]), (_i + 1) * _bar, false);
+        draw_rectangle(_pad, _i * _bar, _pad + (room_width - _pad*2) * tween(0, 1, _x, EASE[$ _ease_names[_i]]), (_i + 1) * _bar, false);
         
         // hover overlay
         draw_set_color(c_silver);

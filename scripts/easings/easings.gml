@@ -6,7 +6,7 @@
 
 function ease(_value, _ease_type = EASE.LINEAR)
 {
-   return EASE[$ _ease_type](_value);
+   return _ease_type(_value);
 }
 
 function tween(_from, _to, _amount, _ease_type = EASE.LINEAR)
@@ -39,22 +39,22 @@ ___EASING =
     IN_QUART : function(z){ return z * z * z * z;     },
     IN_QUINT : function(z){ return z * z * z * z * z; },
 
-    OUT_QUAD  : function(z){ return 1 - (1 -z) * (1 -z);  },
-    OUT_CUBIC : function(z){ return 1 - power(1 - z, 3);  },
-    OUT_QUART : function(z){ return 1 - power(1 - z, 4);  },
-    OUT_QUINT : function(z){ return 1 - power(1 - z, 5);  },
+    OUT_QUAD  : function(z){ return 1 - power(1 - z, 2); },
+    OUT_CUBIC : function(z){ return 1 - power(1 - z, 3); },
+    OUT_QUART : function(z){ return 1 - power(1 - z, 4); },
+    OUT_QUINT : function(z){ return 1 - power(1 - z, 5); },
 
     INOUT_QUAD  : function(z){ return z < 0.5 ? ( 2 * z * z            ) : 1 - power(-2 * z + 2, 2) / 2; },
     INOUT_CUBIC : function(z){ return z < 0.5 ? ( 4 * z * z * z        ) : 1 - power(-2 * z + 2, 3) / 2; },
     INOUT_QUART : function(z){ return z < 0.5 ? ( 8 * z * z * z * z    ) : 1 - power(-2 * z + 2, 4) / 2; },
     INOUT_QUINT : function(z){ return z < 0.5 ? (16 * z * z * z * z * z) : 1 - power(-2 * z + 2, 5) / 2; },
 
-       IN_SINE : function(z){ return 1 - cos((z * pi)      / 2); },
-      OUT_SINE : function(z){ return     sin((z * pi)      / 2); },
+    IN_SINE    : function(z){ return 1 - cos((z * pi)      / 2); },
+    OUT_SINE   : function(z){ return     sin((z * pi)      / 2); },
     INOUT_SINE : function(z){ return   -(cos( z * pi) - 1) / 2;  },
 
-       IN_EXPO : function(z){ return z == 0.0 ? 0 :     power(2,  10 * z - 10); },
-      OUT_EXPO : function(z){ return z == 1.0 ? 1 : 1 - power(2, -10 * z);      },
+    IN_EXPO    : function(z){ return z == 0.0 ? 0 :     power(2,  10 * z - 10); },
+    OUT_EXPO   : function(z){ return z == 1.0 ? 1 : 1 - power(2, -10 * z);      },
     INOUT_EXPO : function(z)
     {
         if (z == 0.0) return 0;
@@ -77,16 +77,16 @@ ___EASING =
                      return (1 + EASE.OUT_BOUNCE(2 * z - 1)) / 2;
     },
 
-       IN_CIRC : function(z){ return 1 - sqrt(1 - power( z,      2)); },
-      OUT_CIRC : function(z){ return     sqrt(1 - power((z - 1), 2)); },
+    IN_CIRC    : function(z){ return 1 - sqrt(1 - power( z,      2)); },
+    OUT_CIRC   : function(z){ return     sqrt(1 - power((z - 1), 2)); },
     INOUT_CIRC : function(z)
     {
 			if (z < 0.5) return (1 - sqrt(1 - power( 2 * z    , 2)))     / 2;
 			else         return (    sqrt(1 - power(-2 * z + 2, 2)) + 1) / 2;
     },
 
-       IN_BACK : function(z){ return     ___CONST.C3 * power(z    , 3) - ___CONST.C1 * power(z    , 2); },
-      OUT_BACK : function(z){ return 1 + ___CONST.C3 * power(z - 1, 3) + ___CONST.C1 * power(z - 1, 2); },
+    IN_BACK    : function(z){ return     ___CONST.C3 * power(z    , 3) - ___CONST.C1 * power(z    , 2); },
+    OUT_BACK   : function(z){ return 1 + ___CONST.C3 * power(z - 1, 3) + ___CONST.C1 * power(z - 1, 2); },
     INOUT_BACK : function(z)
     {
         if (z < 0.5) return (power(2 * z,     2) * ((___CONST.C2 + 1) *  z * 2      - ___CONST.C2))     / 2;
