@@ -15,7 +15,7 @@ function tween(_from, _to, _amount, _ease_type = EASE.LINEAR)
 }
 
 #macro ___CONST (___easing_const())
-function         ___easing_const()
+function ___easing_const()
 {
     static instance = new (function() constructor
     {
@@ -31,7 +31,7 @@ function         ___easing_const()
 }
 
 #macro EASE (___easing())
-function     ___easing()
+function ___easing()
 {
     static instance = new (function() constructor
     {
