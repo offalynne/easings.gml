@@ -1,12 +1,12 @@
-function draw_test()
+draw_test = function()
 {
     // config
     var _animation_interval = 5; // in seconds
-    
+
     // init
     static _x    = 0;
     static _sign = 1;
-    static _ease_names = variable_struct_get_names(EASE);
+    static _ease_names = variable_instance_get_names(EASE);
     
     array_sort(_ease_names, false);
 
@@ -40,7 +40,14 @@ function draw_test()
     {
         // ease bar
         draw_set_color((_i == _hover) ? c_silver : c_dkgray);
-        draw_rectangle(_pad, _i * _bar, _pad + (room_width - _pad*2) * tween(0, 1, _x, EASE[$ _ease_names[_i]]), (_i + 1) * _bar, false);
+        draw_rectangle
+        (
+            _pad, 
+            _i * _bar,
+            _pad + (room_width - _pad*2) * tween(0, 1, _x, variable_instance_get(EASE, _ease_names[_i])),
+            (_i + 1) * _bar, 
+            false
+        );
         
         // hover overlay
         draw_set_color(c_silver);
