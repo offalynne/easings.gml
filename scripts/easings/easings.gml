@@ -128,4 +128,3 @@ function     ___easing()
     })();
     return instance;
 };
-
