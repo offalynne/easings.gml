@@ -88,8 +88,8 @@ function     ___easing()
         OUT_CIRC   = function(z){ return     sqrt(1 - power((z - 1), 2)); };
         INOUT_CIRC = function(z)
         {
-    			if (z < 0.5) return (1 - sqrt(1 - power( 2 * z    , 2)))     / 2;
-    			else         return (    sqrt(1 - power(-2 * z + 2, 2)) + 1) / 2;
+    			if (z < 0.5) return (1.0 - sqrt(1.0 - power( 2.0 * z      , 2)))       / 2.0;
+    			else         return (      sqrt(1.0 - power(-2.0 * z + 2.0, 2)) + 1.0) / 2.0;
         };
 
         IN_BACK    = function(z){ return     ___CONST.C3 * power(z    , 3) - ___CONST.C1 * power(z    , 2); };
@@ -121,7 +121,7 @@ function     ___easing()
             if (z == 0.0) return 0;
             if (z == 1.0) return 1;
         
-            if (z <  0.5) return -(power(2,  20 * z - 10) * sin((20 * z - 11.125) * ___CONST.C5)) / 2
+            if (z <  0.5) return -(power(2,  20 * z - 10) * sin((20 * z - 11.125) * ___CONST.C5)) / 2;
                           return   power(2, -20 * z + 10) * sin((20 * z - 11.125) * ___CONST.C5)  / 2 + 1;
         }
         
