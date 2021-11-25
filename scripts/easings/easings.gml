@@ -126,7 +126,6 @@ function ___easing()
             if (z <  0.5) return -(power(2,  20 * z - 10) * sin((20 * z - 11.125) * ___CONST.C5)) / 2;
                           return   power(2, -20 * z + 10) * sin((20 * z - 11.125) * ___CONST.C5)  / 2 + 1;
         }
-
     })();
     return instance;
 };
