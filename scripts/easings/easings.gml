@@ -86,12 +86,12 @@ function ___easing()
 
         IN_BOUNCE = function(z){ return 1 - OUT_BOUNCE(1 - z); };
 
-        IN_CIRC    = function(z){ return 1 - sqrt(1 - power( z,      2)); };
-        OUT_CIRC   = function(z){ return     sqrt(1 - power((z - 1), 2)); };
+        IN_CIRC    = function(z){ return 1 - sqrt(1.0 - power( z,      2)); };
+        OUT_CIRC   = function(z){ return     sqrt(1.0 - power((z - 1), 2)); };
         INOUT_CIRC = function(z)
         {
-    			if (z < 0.5) return (1.0 - sqrt(1.0 - power( 2.0 * z      , 2)))       / 2.0;
-    			             return (      sqrt(1.0 - power(-2.0 * z + 2.0, 2)) + 1.0) / 2.0;
+            if (z < 0.5) return (1 - sqrt(1.0 - power( 2 * z    , 2)))     / 2;
+    			 return (    sqrt(1.0 - power(-2 * z + 2, 2)) + 1) / 2;
         };
 
         IN_BACK    = function(z){ return     ___CONST.C3 * power(z    , 3) - ___CONST.C1 * power(z    , 2); };
@@ -104,16 +104,16 @@ function ___easing()
 
         IN_ELASTIC = function(z)
         {
-            if (z == 0.0) return 0;
-            if (z == 1.0) return 1;
+            if (z == 0) return 0;
+            if (z == 1) return 1;
         
             return -power(2, 10 * z - 10) * sin((z * 10 - 10.75) * ___CONST.C4);
         };
 
         OUT_ELASTIC = function(z)
         {
-            if (z == 0.0) return 0;
-            if (z == 1.0) return 1;
+            if (z == 0) return 0;
+            if (z == 1) return 1;
         
             return power(2, -10 * z) * sin((z * 10 - 0.75) * ___CONST.C4) + 1;
         };
