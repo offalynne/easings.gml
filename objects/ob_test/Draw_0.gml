@@ -7,7 +7,7 @@ draw_test = function()
     static _x    = 0;
     static _sign = 1;
     static _ease_names = variable_instance_get_names(EASE);
-    
+
     array_sort(_ease_names, false);
 
     // animate
