@@ -14,23 +14,6 @@ function tween(_from, _to, _amount, _ease_type = EASE.LINEAR)
     return _from + (_to - _from) * ease(_amount, _ease_type);
 }
 
-#macro ___CONST (___easing_const())
-function ___easing_const()
-{
-    static instance = new (function() constructor {
-        
-    D1 = 2.75;
-    N1 = 7.5625;
-    C1 = 1.70158;
-    C2 = C1 * 1.525;
-    C3 = C1 + 1;
-    C4 = (2 * pi) / 3;
-    C5 = (2 * pi) / 4.5;
-        
-    })();
-    return instance;
-}
-
 #macro EASE (___easing())
 function ___easing()
 {
@@ -70,13 +53,17 @@ function ___easing()
         if (z <  0.5) return      power(2,  20 * z - 10)  / 2
                       return (2 - power(2, -20 * z + 10)) / 2;
     };
+    
+    #macro ___EASING_D1 2.75
+    #macro ___EASING_N1 7.5625
+
 
     OUT_BOUNCE = function(z)
     {
-             if (z < 1   / ___CONST.D1) {                             return ___CONST.N1 * z * z; }
-        else if (z < 2   / ___CONST.D1) { z -= (1.5   / ___CONST.D1); return ___CONST.N1 * z * z + 0.75; }
-        else if (z < 2.5 / ___CONST.D1) { z -= (2.25  / ___CONST.D1); return ___CONST.N1 * z * z + 0.9375; }
-                                          z -= (2.625 / ___CONST.D1); return ___CONST.N1 * z * z + 0.984375;
+             if (z < 1   / ___EASING_D1) {                             return ___EASING_N1 * z * z; }
+        else if (z < 2   / ___EASING_D1) { z -= (1.5   / ___EASING_D1); return ___EASING_N1 * z * z + 0.75; }
+        else if (z < 2.5 / ___EASING_D1) { z -= (2.25  / ___EASING_D1); return ___EASING_N1 * z * z + 0.9375; }
+                                          z -= (2.625 / ___EASING_D1); return ___EASING_N1 * z * z + 0.984375;
     };
 
     INOUT_BOUNCE = function(z)
@@ -94,21 +81,29 @@ function ___easing()
         if (z < 0.5) return (1 - sqrt(1 - power( 2 * z    , 2)))     / 2;
                      return (    sqrt(1 - power(-2 * z + 2, 2)) + 1) / 2;
     };
+    
+    #macro ___EASING_C1 1.70158
+    #macro ___EASING_C2 (___EASING_C1 * 1.525)
+    #macro ___EASING_C3 (___EASING_C1 + 1)
 
-    IN_BACK    = function(z){ return     ___CONST.C3 * power(z    , 3) - ___CONST.C1 * power(z    , 2); };
-    OUT_BACK   = function(z){ return 1 + ___CONST.C3 * power(z - 1, 3) + ___CONST.C1 * power(z - 1, 2); };
+
+    IN_BACK    = function(z){ return     ___EASING_C3 * power(z    , 3) - ___EASING_C1 * power(z    , 2); };
+    OUT_BACK   = function(z){ return 1 + ___EASING_C3 * power(z - 1, 3) + ___EASING_C1 * power(z - 1, 2); };
     INOUT_BACK = function(z)
     {
-        if (z < 0.5) return (power(2 * z,     2) * ((___CONST.C2 + 1) *  z * 2      - ___CONST.C2))     / 2;
-                     return (power(2 * z - 2, 2) * ((___CONST.C2 + 1) * (z * 2 - 2) + ___CONST.C2) + 2) / 2;
+        if (z < 0.5) return (power(2 * z,     2) * ((___EASING_C2 + 1) *  z * 2      - ___EASING_C2))     / 2;
+                     return (power(2 * z - 2, 2) * ((___EASING_C2 + 1) * (z * 2 - 2) + ___EASING_C2) + 2) / 2;
     };
+    
+    #macro ___EASING_C4 ((2 * pi) / 3)
+    #macro ___EASING_C5 ((2 * pi) / 4.5)
 
     IN_ELASTIC = function(z)
     {
         if (z == 0) return 0;
         if (z == 1) return 1;
 
-        return -power(2, 10 * z - 10) * sin((z * 10 - 10.75) * ___CONST.C4);
+        return -power(2, 10 * z - 10) * sin((z * 10 - 10.75) * ___EASING_C4);
     };
 
     OUT_ELASTIC = function(z)
@@ -116,7 +111,7 @@ function ___easing()
         if (z == 0) return 0;
         if (z == 1) return 1;
 
-        return power(2, -10 * z) * sin((z * 10 - 0.75) * ___CONST.C4) + 1;
+        return power(2, -10 * z) * sin((z * 10 - 0.75) * ___EASING_C4) + 1;
     };
 
     INOUT_ELASTIC = function(z)
@@ -124,8 +119,8 @@ function ___easing()
         if (z == 0) return 0;
         if (z == 1) return 1;
 
-        if (z < 0.5) return -(power(2,  20 * z - 10) * sin((20 * z - 11.125) * ___CONST.C5)) / 2;
-                     return   power(2, -20 * z + 10) * sin((20 * z - 11.125) * ___CONST.C5)  / 2 + 1;
+        if (z < 0.5) return -(power(2,  20 * z - 10) * sin((20 * z - 11.125) * ___EASING_C5)) / 2;
+                     return   power(2, -20 * z + 10) * sin((20 * z - 11.125) * ___EASING_C5)  / 2 + 1;
     }
         
     })();
