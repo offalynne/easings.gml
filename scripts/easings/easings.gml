@@ -57,13 +57,12 @@ function ___easing()
     #macro ___EASING_D1 2.75
     #macro ___EASING_N1 7.5625
 
-
     OUT_BOUNCE = function(z)
     {
-             if (z < 1   / ___EASING_D1) {                             return ___EASING_N1 * z * z; }
+             if (z < 1   / ___EASING_D1) {                              return ___EASING_N1 * z * z; }
         else if (z < 2   / ___EASING_D1) { z -= (1.5   / ___EASING_D1); return ___EASING_N1 * z * z + 0.75; }
         else if (z < 2.5 / ___EASING_D1) { z -= (2.25  / ___EASING_D1); return ___EASING_N1 * z * z + 0.9375; }
-                                          z -= (2.625 / ___EASING_D1); return ___EASING_N1 * z * z + 0.984375;
+                                           z -= (2.625 / ___EASING_D1); return ___EASING_N1 * z * z + 0.984375;
     };
 
     INOUT_BOUNCE = function(z)
@@ -83,27 +82,26 @@ function ___easing()
     };
     
     #macro ___EASING_C1 1.70158
-    #macro ___EASING_C2 (___EASING_C1 * 1.525)
-    #macro ___EASING_C3 (___EASING_C1 + 1)
+    global.___EASING_C2 = ___EASING_C1 * 1.525;
+    global.___EASING_C3 = ___EASING_C1 + 1;
 
-
-    IN_BACK    = function(z){ return     ___EASING_C3 * power(z    , 3) - ___EASING_C1 * power(z    , 2); };
-    OUT_BACK   = function(z){ return 1 + ___EASING_C3 * power(z - 1, 3) + ___EASING_C1 * power(z - 1, 2); };
+    IN_BACK    = function(z){ return     global.___EASING_C3 * power(z    , 3) - ___EASING_C1 * power(z    , 2); };
+    OUT_BACK   = function(z){ return 1 + global.___EASING_C3 * power(z - 1, 3) + ___EASING_C1 * power(z - 1, 2); };
     INOUT_BACK = function(z)
     {
-        if (z < 0.5) return (power(2 * z,     2) * ((___EASING_C2 + 1) *  z * 2      - ___EASING_C2))     / 2;
-                     return (power(2 * z - 2, 2) * ((___EASING_C2 + 1) * (z * 2 - 2) + ___EASING_C2) + 2) / 2;
+        if (z < 0.5) return (power(2 * z,     2) * ((global.___EASING_C2 + 1) *  z * 2      - global.___EASING_C2))     / 2;
+                     return (power(2 * z - 2, 2) * ((global.___EASING_C2 + 1) * (z * 2 - 2) + global.___EASING_C2) + 2) / 2;
     };
     
-    #macro ___EASING_C4 ((2 * pi) / 3)
-    #macro ___EASING_C5 ((2 * pi) / 4.5)
+    global.___EASING_C4 = (2 * pi) / 3;
+    global.___EASING_C5 = (2 * pi) / 4.5;
 
     IN_ELASTIC = function(z)
     {
         if (z == 0) return 0;
         if (z == 1) return 1;
 
-        return -power(2, 10 * z - 10) * sin((z * 10 - 10.75) * ___EASING_C4);
+        return -power(2, 10 * z - 10) * sin((z * 10 - 10.75) * global.___EASING_C4);
     };
 
     OUT_ELASTIC = function(z)
@@ -111,7 +109,7 @@ function ___easing()
         if (z == 0) return 0;
         if (z == 1) return 1;
 
-        return power(2, -10 * z) * sin((z * 10 - 0.75) * ___EASING_C4) + 1;
+        return power(2, -10 * z) * sin((z * 10 - 0.75) * global.___EASING_C4) + 1;
     };
 
     INOUT_ELASTIC = function(z)
@@ -119,8 +117,8 @@ function ___easing()
         if (z == 0) return 0;
         if (z == 1) return 1;
 
-        if (z < 0.5) return -(power(2,  20 * z - 10) * sin((20 * z - 11.125) * ___EASING_C5)) / 2;
-                     return   power(2, -20 * z + 10) * sin((20 * z - 11.125) * ___EASING_C5)  / 2 + 1;
+        if (z < 0.5) return -(power(2,  20 * z - 10) * sin((20 * z - 11.125) * global.___EASING_C5)) / 2;
+                     return   power(2, -20 * z + 10) * sin((20 * z - 11.125) * global.___EASING_C5)  / 2 + 1;
     }
         
     })();
