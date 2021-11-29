@@ -18,7 +18,7 @@ function tween(_from, _to, _amount, _ease_type = EASE.LINEAR)
 function ___easing()
 {
     static instance = new (function() constructor {
-        
+
     LINEAR       = function(z){ return z; };
     SMOOTHSTEP   = function(z){ return z * z * (3 - 2 * z); };
     SMOOTHERSTEP = function(z){ return z * z * z * (z * (z * 6 - 15) + 10); };
@@ -72,13 +72,23 @@ function ___easing()
     };
 
     IN_BOUNCE = function(z){ return 1 - OUT_BOUNCE(1 - z); };
+    
+    global.___EASING_SQRT = function(z)
+    {
+        if (sign(z) == 1)
+        {
+            return sqrt(z);
+        }
+        
+        return 0;
+    };
 
-    IN_CIRC    = function(z){ return 1 - sqrt(1 - power( z,      2)); };
-    OUT_CIRC   = function(z){ return     sqrt(1 - power((z - 1), 2)); };
+    IN_CIRC    = function(z){ return 1 - global.___EASING_SQRT(1 - power( z,      2)); };
+    OUT_CIRC   = function(z){ return     global.___EASING_SQRT(1 - power((z - 1), 2)); };
     INOUT_CIRC = function(z)
     {
-        if (z < 0.5) return (1 - sqrt(1 - power( 2 * z    , 2)))     / 2;
-                     return (    sqrt(1 - power(-2 * z + 2, 2)) + 1) / 2;
+        if (z < 0.5) return (1 - global.___EASING_SQRT(1 - power( 2 * z    , 2))) / 2;
+                     return (1 + global.___EASING_SQRT(1 - power(-2 * z + 2, 2))) / 2;
     };
     
     #macro ___EASING_C1 1.70158

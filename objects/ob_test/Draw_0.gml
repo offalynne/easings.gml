@@ -6,15 +6,22 @@ draw_test = function()
     // init
     static _x    = 0;
     static _sign = 1;
-    static _names = variable_instance_get_names(EASE);
-    static _init = true;
-
-    if (_init)
-    {
-        // alphabetize
-        array_sort(_names, false);
-        _init = false;
-    }
+    static _names = 
+    [
+        "LINEAR", "SMOOTHSTEP", "SMOOTHERSTEP", "INVERSE_SMOOTHSTEP",
+        
+        "IN_CUBIC",  "IN_QUAD", "IN_QUART", "IN_QUINT",
+        "IN_SINE",   "IN_CIRC", "IN_EXPO",
+        "IN_BOUNCE", "IN_BACK", "IN_ELASTIC",
+        
+        "OUT_CUBIC", "OUT_QUAD", "OUT_QUART", "OUT_QUINT",
+        "OUT_SINE",  "OUT_EXPO", "OUT_BOUNCE",
+        "OUT_CIRC",  "OUT_BACK", "OUT_ELASTIC",
+        
+        "INOUT_CUBIC", "INOUT_QUAD", "INOUT_QUART", "INOUT_QUINT",
+        "INOUT_SINE",  "INOUT_EXPO", "INOUT_BOUNCE",
+        "INOUT_BACK",  "INOUT_CIRC", "INOUT_ELASTIC"
+    ];
 
     // animate
     _x += (delta_time / (1000000 * _animation_interval)) * _sign;    
