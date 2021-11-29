@@ -20,15 +20,15 @@ draw_test = function()
     _x += (delta_time / (1000000 * _animation_interval)) * _sign;    
     if (_x > 1.0)
     {
-        _x =  1 - (_x mod 1);
+        _x = 1 - (_x mod 1);
         _sign = -1;
     }
     else if (sign(_x) == -1)
     {
         _x = -_x;
-        _sign =   1;
+        _sign = 1;
     }
-       
+
     // bg
     var _pad = 190;
     draw_set_color(0);
@@ -53,7 +53,7 @@ draw_test = function()
             (_i + 1) * _bar, 
             false
         );
-        
+
         // hover overlay
         draw_set_color(c_silver);
         if (_i == _hover)
@@ -63,13 +63,13 @@ draw_test = function()
             draw_set_alpha(1);
             draw_set_color(0);
         }
-        
+
         // label
         draw_text(_pad, -2 + _i * _bar, "EASE." + _names[_i]);
                 
         ++_i;
     }
-    
+
     // overlay
     draw_set_alpha(0.125);
     draw_set_color(c_silver);
