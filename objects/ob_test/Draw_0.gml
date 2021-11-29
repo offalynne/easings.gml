@@ -11,7 +11,7 @@ draw_test = function()
 
     if (_init)
     {
-        // alphabetze
+        // alphabetize
         array_sort(_names, false);
         _init = false;
     }
