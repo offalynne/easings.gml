@@ -10,17 +10,17 @@ draw_test = function()
     [
         "LINEAR", "SMOOTHSTEP", "SMOOTHERSTEP", "INVERSE_SMOOTHSTEP",
         
-        "IN_CUBIC",  "IN_QUAD", "IN_QUART", "IN_QUINT",
-        "IN_SINE",   "IN_CIRC", "IN_EXPO",
-        "IN_BOUNCE", "IN_BACK", "IN_ELASTIC",
+        "IN_QUAD",   "IN_CUBIC", "IN_QUART", "IN_QUINT",
+        "IN_SINE",   "IN_CIRC",  "IN_EXPO",
+        "IN_BOUNCE", "IN_BACK",  "IN_ELASTIC",
         
-        "OUT_CUBIC", "OUT_QUAD", "OUT_QUART", "OUT_QUINT",
-        "OUT_SINE",  "OUT_EXPO", "OUT_BOUNCE",
-        "OUT_CIRC",  "OUT_BACK", "OUT_ELASTIC",
+        "OUT_QUAD",  "OUT_CUBIC", "OUT_QUART", "OUT_QUINT",
+        "OUT_SINE",  "OUT_EXPO",  "OUT_BOUNCE",
+        "OUT_CIRC",  "OUT_BACK",  "OUT_ELASTIC",
         
-        "INOUT_CUBIC", "INOUT_QUAD", "INOUT_QUART", "INOUT_QUINT",
-        "INOUT_SINE",  "INOUT_EXPO", "INOUT_BOUNCE",
-        "INOUT_BACK",  "INOUT_CIRC", "INOUT_ELASTIC"
+        "INOUT_QUAD",  "INOUT_CUBIC", "INOUT_QUART", "INOUT_QUINT",
+        "INOUT_SINE",  "INOUT_EXPO",  "INOUT_BOUNCE",
+        "INOUT_BACK",  "INOUT_CIRC",  "INOUT_ELASTIC"
     ];
 
     // animate
