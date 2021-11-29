@@ -79,6 +79,7 @@ function ___easing()
     {
         if (sign(z) == 1)
         {
+           // epsilon-safe sqrt
             return sqrt(z);
         }
         
