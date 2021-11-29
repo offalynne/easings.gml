@@ -27,10 +27,10 @@ function ___easing()
 
     INVERSE_SMOOTHSTEP = function(z){ return 0.5 - sin(arcsin(1 - 2 * z) / 3); };
 
-    IN_QUAD  = function(z){ return z * z; };
-    IN_CUBIC = function(z){ return z * z * z; };
-    IN_QUART = function(z){ return z * z * z * z; };
-    IN_QUINT = function(z){ return z * z * z * z * z; };
+    IN_QUAD  = function(z){ return power(z, 2); };
+    IN_CUBIC = function(z){ return power(z, 3); };
+    IN_QUART = function(z){ return power(z, 4); };
+    IN_QUINT = function(z){ return power(z, 5); };
 
     OUT_QUAD  = function(z){ return 1 - power(1 - z, 2); };
     OUT_CUBIC = function(z){ return 1 - power(1 - z, 3); };
@@ -90,19 +90,19 @@ function ___easing()
     INOUT_CIRC = function(z)
     {
         if (z >= 0.5) return (1 + global.___EASING_SQRT(1 - power(-2 * z + 2, 2))) / 2;
-                      return (1 - global.___EASING_SQRT(1 - power( 2 * z    , 2))) / 2;
+                      return (1 - global.___EASING_SQRT(1 - power( 2 * z,     2))) / 2;
     };
     
     #macro ___EASING_C1 1.70158
     global.___EASING_C2 = ___EASING_C1 * 1.525;
     global.___EASING_C3 = ___EASING_C1 + 1;
 
-    IN_BACK    = function(z){ return     global.___EASING_C3 * power(z    , 3) - ___EASING_C1 * power(z    , 2); };
+    IN_BACK    = function(z){ return     global.___EASING_C3 * power(z,     3) - ___EASING_C1 * power(z,     2); };
     OUT_BACK   = function(z){ return 1 + global.___EASING_C3 * power(z - 1, 3) + ___EASING_C1 * power(z - 1, 2); };
     INOUT_BACK = function(z)
     {
         if (z >= 0.5) return (power(2 * z - 2, 2) * ((global.___EASING_C2 + 1) * (z * 2 - 2) + global.___EASING_C2) + 2) / 2;
-                      return (power(2 * z,     2) * ((global.___EASING_C2 + 1) *  z * 2      - global.___EASING_C2))     / 2;
+                      return (power(2 * z,     2) * ((global.___EASING_C2 + 1) * (z * 2)     - global.___EASING_C2))     / 2;
     };
     
     global.___EASING_C4 = (2 * pi) / 3;
