@@ -4,7 +4,7 @@ draw_test = function()
     var _animation_interval = 5; // in seconds
 
     // init
-    static _x    = 0;
+    static _x = 0;
     static _sign = 1;
     static _names = 
     [
