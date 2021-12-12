@@ -37,9 +37,9 @@ function ___easing()
     OUT_QUART = function(z){ return 1 - power(1 - z, 4); };
     OUT_QUINT = function(z){ return 1 - power(1 - z, 5); };
 
-    INOUT_QUAD  = function(z){ return z < 0.5 ? power(z, 2) * 2  : 1 - power(-2 * z + 2, 2) / 2; };
-    INOUT_CUBIC = function(z){ return z < 0.5 ? power(z, 3) * 4  : 1 - power(-2 * z + 2, 3) / 2; };
-    INOUT_QUART = function(z){ return z < 0.5 ? power(z, 4) * 8  : 1 - power(-2 * z + 2, 4) / 2; };
+    INOUT_QUAD  = function(z){ return z < 0.5 ? power(z, 2) *  2 : 1 - power(-2 * z + 2, 2) / 2; };
+    INOUT_CUBIC = function(z){ return z < 0.5 ? power(z, 3) *  4 : 1 - power(-2 * z + 2, 3) / 2; };
+    INOUT_QUART = function(z){ return z < 0.5 ? power(z, 4) *  8 : 1 - power(-2 * z + 2, 4) / 2; };
     INOUT_QUINT = function(z){ return z < 0.5 ? power(z, 5) * 16 : 1 - power(-2 * z + 2, 5) / 2; };
 
     IN_SINE    = function(z){ return 1 - cos((z * pi)      / 2); };
@@ -47,7 +47,7 @@ function ___easing()
     INOUT_SINE = function(z){ return   -(cos( z * pi) - 1) / 2;  };
 
     IN_EXPO    = function(z){ return z == 0 ? 0 :     power(2,  10 * z - 10); };
-    OUT_EXPO   = function(z){ return z == 1 ? 1 : 1 - power(2, -10 * z); };
+    OUT_EXPO   = function(z){ return z == 1 ? 1 : 1 - power(2, -10 * z     ); };
     INOUT_EXPO = function(z)
     {
         if (z == 0.0) return 0;
@@ -61,8 +61,8 @@ function ___easing()
 
     OUT_BOUNCE = function(z)
     {
-             if (z < 1.0 / ___EASING_D1) {                              return ___EASING_N1 * z * z; }
-        else if (z < 2.0 / ___EASING_D1) { z -= (1.5   / ___EASING_D1); return ___EASING_N1 * z * z + 0.75; }
+             if (z < 1.0 / ___EASING_D1) {                              return ___EASING_N1 * z * z;          }
+        else if (z < 2.0 / ___EASING_D1) { z -= (1.5   / ___EASING_D1); return ___EASING_N1 * z * z + 0.75;   }
         else if (z < 2.5 / ___EASING_D1) { z -= (2.25  / ___EASING_D1); return ___EASING_N1 * z * z + 0.9375; }
                                            z -= (2.625 / ___EASING_D1); return ___EASING_N1 * z * z + 0.984375;
     };
@@ -103,7 +103,7 @@ function ___easing()
     INOUT_BACK = function(z)
     {
         if (z >= 0.5) return (power(2 * z - 2, 2) * ((global.___EASING_C2 + 1) * (z * 2 - 2) + global.___EASING_C2) + 2) / 2;
-                      return (power(2 * z,     2) * ((global.___EASING_C2 + 1) * (z * 2)     - global.___EASING_C2))     / 2;
+                      return (power(2 * z,     2) * ((global.___EASING_C2 + 1) * (z * 2    ) - global.___EASING_C2)    ) / 2;
     };
     
     global.___EASING_C4 = (2 * pi) / 3;
