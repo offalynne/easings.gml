@@ -8,7 +8,7 @@ draw_test = function()
     static _sign = 1;
     static _names = 
     [
-        "LINEAR", "SMOOTHSTEP", "SMOOTHERSTEP", "INVERSE_SMOOTHSTEP",
+        "LINEAR", "SMOOTHSTEP", "SMOOTHERSTEP", "SMOOTHESTSTEP",
         
         "IN_QUAD",   "IN_CUBIC", "IN_QUART", "IN_QUINT",
         "IN_SINE",   "IN_CIRC",  "IN_EXPO",

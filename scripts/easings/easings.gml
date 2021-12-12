@@ -1,7 +1,7 @@
 // easings.gml, @offalynne 2021
 //
 // refs
-//   wikipedia.org/wiki/Smoothstep
+//   github.com/FlexMonkey/Interpolation-Playground-/blob/master/InterpolationPlayground.playground/Contents.swift
 //   github.com/ai/easings.net/blob/master/src/easings/easingsFunctions.ts
 
 function ease(_value, _ease_type = EASE.LINEAR)
@@ -25,7 +25,7 @@ function ___easing()
        
     SMOOTHERSTEP = function(z){ return z * z * z * (z * (z * 6 - 15) + 10); };
 
-    INVERSE_SMOOTHSTEP = function(z){ return 0.5 - sin(arcsin(1 - 2 * z) / 3); };
+    SMOOTHESTSTEP = function(z){ return -20 * power(z, 7) + 70 * power(z, 6) - 84 * power(z, 5) + 35 * power(z, 4); };
 
     IN_QUAD  = function(z){ return power(z, 2); };
     IN_CUBIC = function(z){ return power(z, 3); };
