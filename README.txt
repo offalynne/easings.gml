@@ -13,7 +13,7 @@ tween
   returned: Number
     
 Reference
-  wikipedia.org/wiki/Smoothstep
+  sol.gfxile.net/interpolation
   easings.net
 
 Easings (EASE.*)
