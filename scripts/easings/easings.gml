@@ -1,8 +1,8 @@
 // easings.gml, @offalynne 2021
 //
 // refs
-//   github.com/FlexMonkey/Interpolation-Playground-/blob/master/InterpolationPlayground.playground/Contents.swift
-//   github.com/ai/easings.net/blob/master/src/easings/easingsFunctions.ts
+//   sol.gfxile.net/interpolation
+//   github.com/ai/easings.net
 
 function ease(_value, _ease_type = EASE.LINEAR)
 {
