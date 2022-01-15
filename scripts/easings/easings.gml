@@ -75,16 +75,7 @@ function ___easing()
 
     IN_BOUNCE = function(z){ return 1 - OUT_BOUNCE(1 - z); };
     
-    global.___EASING_SQRT = function(z)
-    {
-        if (sign(z) == 1)
-        {
-           // epsilon-safe sqrt
-            return sqrt(z);
-        }
-        
-        return 0;
-    };
+    global.___EASING_SQRT = function(z){ return ((sign(z) == 1) ? sqrt(z) : 0); }
 
     IN_CIRC    = function(z){ return 1 - global.___EASING_SQRT(1 - power( z,      2)); };
     OUT_CIRC   = function(z){ return     global.___EASING_SQRT(1 - power((z - 1), 2)); };
