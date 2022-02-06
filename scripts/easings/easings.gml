@@ -51,8 +51,8 @@ function ___easing()
                       return      power(2,  20 * z - 10)  / 2   
     };
 
-    global.___EASING_D1 2.75
-    global.___EASING_N1 7.5625
+    global.___EASING_D1 = 2.75
+    global.___EASING_N1 = 7.5625
 
     OUT_BOUNCE = function(z)
     {
