@@ -56,15 +56,15 @@ function ___easing()
                       return      power(2,  20 * z - 10)  / 2   
     };
     
-    #macro ___EASING_D1 2.75
-    #macro ___EASING_N1 7.5625
+    global.___EASING_D1 2.75
+    global.___EASING_N1 7.5625
 
     OUT_BOUNCE = function(z)
     {
-             if (z < 1.0 / ___EASING_D1) {                              return ___EASING_N1 * z * z;          }
-        else if (z < 2.0 / ___EASING_D1) { z -= (1.5   / ___EASING_D1); return ___EASING_N1 * z * z + 0.75;   }
-        else if (z < 2.5 / ___EASING_D1) { z -= (2.25  / ___EASING_D1); return ___EASING_N1 * z * z + 0.9375; }
-                                           z -= (2.625 / ___EASING_D1); return ___EASING_N1 * z * z + 0.984375;
+             if (z < 1.0 / global.___EASING_D1) {                                     return global.___EASING_N1 * z * z;          }
+        else if (z < 2.0 / global.___EASING_D1) { z -= (1.5   / global.___EASING_D1); return global.___EASING_N1 * z * z + 0.75;   }
+        else if (z < 2.5 / global.___EASING_D1) { z -= (2.25  / global.___EASING_D1); return global.___EASING_N1 * z * z + 0.9375; }
+                                                  z -= (2.625 / global.___EASING_D1); return global.___EASING_N1 * z * z + 0.984375;
     };
 
     INOUT_BOUNCE = function(z)
@@ -85,12 +85,12 @@ function ___easing()
                       return (1 - global.___EASING_SQRT(1 - power( 2 * z,     2))) / 2;
     };
     
-    #macro ___EASING_C1 1.70158
-    global.___EASING_C2 = ___EASING_C1 * 1.525;
-    global.___EASING_C3 = ___EASING_C1 + 1;
+    global.___EASING_C1 1.70158
+    global.___EASING_C2 = global.___EASING_C1 * 1.525;
+    global.___EASING_C3 = global.___EASING_C1 + 1;
 
-    IN_BACK    = function(z){ return     global.___EASING_C3 * power(z,     3) - ___EASING_C1 * power(z,     2); };
-    OUT_BACK   = function(z){ return 1 + global.___EASING_C3 * power(z - 1, 3) + ___EASING_C1 * power(z - 1, 2); };
+    IN_BACK    = function(z){ return     global.___EASING_C3 * power(z,     3) -global.___EASING_C1 * power(z,     2); };
+    OUT_BACK   = function(z){ return 1 + global.___EASING_C3 * power(z - 1, 3) +global.___EASING_C1 * power(z - 1, 2); };
     INOUT_BACK = function(z)
     {
         if (z >= 0.5) return (power(2 * z - 2, 2) * ((global.___EASING_C2 + 1) * (z * 2 - 2) + global.___EASING_C2) + 2) / 2;
