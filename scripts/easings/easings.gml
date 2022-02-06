@@ -1,4 +1,5 @@
 // easings.gml, @offalynne 2021
+// github.com/offalynne/easings.gml
 //
 // refs
 //   sol.gfxile.net/interpolation
