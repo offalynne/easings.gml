@@ -51,8 +51,8 @@ function ___easing()
                       return      power(2,  20 * z - 10)  / 2   
     };
 
-    global.___EASING_D1 = 2.75
-    global.___EASING_N1 = 7.5625
+    global.___EASING_D1 = 2.75;
+    global.___EASING_N1 = 7.5625;
 
     OUT_BOUNCE = function(z)
     {
@@ -80,7 +80,7 @@ function ___easing()
                       return (1 - global.___EASING_SQRT(1 - power( 2 * z,     2))) / 2;
     };
 
-    global.___EASING_C1 1.70158
+    global.___EASING_C1 = 1.70158;
     global.___EASING_C2 = global.___EASING_C1 * 1.525;
     global.___EASING_C3 = global.___EASING_C1 + 1;
 
