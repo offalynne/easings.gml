@@ -22,7 +22,7 @@ function ___easing()
     LINEAR = function(z){ return z; };
 
     SMOOTHSTEP = function(z){ return z * z * (3 - 2 * z); };
-       
+
     SMOOTHERSTEP = function(z){ return z * z * z * (z * (z * 6 - 15) + 10); };
 
     SMOOTHESTSTEP = function(z){ return -20 * power(z, 7) + 70 * power(z, 6) - 84 * power(z, 5) + 35 * power(z, 4); };
@@ -55,7 +55,7 @@ function ___easing()
         if (z >= 0.5) return (2 - power(2, -20 * z + 10)) / 2;
                       return      power(2,  20 * z - 10)  / 2   
     };
-    
+
     global.___EASING_D1 2.75
     global.___EASING_N1 7.5625
 
@@ -74,7 +74,7 @@ function ___easing()
     };
 
     IN_BOUNCE = function(z){ return 1 - OUT_BOUNCE(1 - z); };
-    
+
     global.___EASING_SQRT = function(z){ return ((sign(z) == 1) ? sqrt(z) : 0); }
 
     IN_CIRC    = function(z){ return 1 - global.___EASING_SQRT(1 - power( z,      2)); };
@@ -84,7 +84,7 @@ function ___easing()
         if (z >= 0.5) return (1 + global.___EASING_SQRT(1 - power(-2 * z + 2, 2))) / 2;
                       return (1 - global.___EASING_SQRT(1 - power( 2 * z,     2))) / 2;
     };
-    
+
     global.___EASING_C1 1.70158
     global.___EASING_C2 = global.___EASING_C1 * 1.525;
     global.___EASING_C3 = global.___EASING_C1 + 1;
@@ -96,7 +96,7 @@ function ___easing()
         if (z >= 0.5) return (power(2 * z - 2, 2) * ((global.___EASING_C2 + 1) * (z * 2 - 2) + global.___EASING_C2) + 2) / 2;
                       return (power(2 * z,     2) * ((global.___EASING_C2 + 1) * (z * 2    ) - global.___EASING_C2)    ) / 2;
     };
-    
+
     global.___EASING_C4 = (2 * pi) / 3;
     global.___EASING_C5 = (2 * pi) / 4.5;
 
@@ -123,7 +123,7 @@ function ___easing()
         if (z >= 0.5) return   power(2, -20 * z + 10) * sin((20 * z - 11.125) * global.___EASING_C5)  / 2 + 1;
                       return -(power(2,  20 * z - 10) * sin((20 * z - 11.125) * global.___EASING_C5)) / 2;
     }
-        
+
     })();
     return instance;
 };
