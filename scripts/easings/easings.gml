@@ -21,12 +21,6 @@ function ___easing()
 
     LINEAR = function(z){ return z; };
 
-    SMOOTHSTEP = function(z){ return z * z * (3 - 2 * z); };
-
-    SMOOTHERSTEP = function(z){ return z * z * z * (z * (z * 6 - 15) + 10); };
-
-    SMOOTHESTSTEP = function(z){ return -20 * power(z, 7) + 70 * power(z, 6) - 84 * power(z, 5) + 35 * power(z, 4); };
-
     IN_QUAD  = function(z){ return power(z, 2); };
     IN_CUBIC = function(z){ return power(z, 3); };
     IN_QUART = function(z){ return power(z, 4); };
@@ -123,6 +117,10 @@ function ___easing()
         if (z >= 0.5) return   power(2, -20 * z + 10) * sin((20 * z - 11.125) * global.___EASING_C5)  / 2 + 1;
                       return -(power(2,  20 * z - 10) * sin((20 * z - 11.125) * global.___EASING_C5)) / 2;
     }
+       
+    SMOOTHESTSTEP = function(z){ return -20 * power(z, 7) + 70 * power(z, 6) - 84 * power(z, 5) + 35 * power(z, 4); };
+    SMOOTHERSTEP  = function(z){ return z * z * z * (z * (z * 6 - 15) + 10); };
+    SMOOTHSTEP    = function(z){ return z * z * (3 - 2 * z); };
 
     })();
     return instance;
