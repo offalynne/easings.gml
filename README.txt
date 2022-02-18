@@ -23,7 +23,7 @@ Easings (EASE.*)
   SMOOTHESTSTEP
   IN_/​OUT_/​INOUT_*
 QUAD, CUBIC, QUART, QUINT, SINE,
-  EXPO, BOUNCE, CIRC, BACK, ELASTIC
+   EXPO, BOUNCE, CIRC, BACK, ELASTIC
 
 @offalynne, 2021
 MIT licensed, use as you please
