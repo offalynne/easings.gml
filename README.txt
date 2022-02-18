@@ -3,12 +3,12 @@ easings.gml
 Easing for GMS2
 
 ease
-  function: Eases value within unit interval
+  function: Ease within unit interval
   argument: Number, Easing (Optional)
   returned: Number
 
 tween
-  function: Eases positional value
+  function: Ease positional value
   argument: Start, End, Position, Easing (Optional)
   returned: Number
     
