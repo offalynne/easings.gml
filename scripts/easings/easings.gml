@@ -84,8 +84,8 @@ function __easing()
     global.__EASING_C2 = global.__EASING_C1 * 1.525;
     global.__EASING_C3 = global.__EASING_C1 + 1;
 
-    IN_BACK    = function(z){ return     global.__EASING_C3 * power(z,     3) -global.__EASING_C1 * power(z,     2); };
-    OUT_BACK   = function(z){ return 1 + global.__EASING_C3 * power(z - 1, 3) +global.__EASING_C1 * power(z - 1, 2); };
+    IN_BACK    = function(z){ return     global.__EASING_C3 * power(z,     3) - global.__EASING_C1 * power(z,     2); };
+    OUT_BACK   = function(z){ return 1 + global.__EASING_C3 * power(z - 1, 3) + global.__EASING_C1 * power(z - 1, 2); };
     INOUT_BACK = function(z)
     {
         if (z >= 0.5) return (power(2 * z - 2, 2) * ((global.__EASING_C2 + 1) * (z * 2 - 2) + global.__EASING_C2) + 2) / 2;
