@@ -15,8 +15,8 @@ function tween(_from, _to, _amount, _ease_type = EASE.LINEAR)
     return _from + (_to - _from) * ease(_amount, _ease_type);
 }
 
-#macro EASE (___easing())
-function ___easing()
+#macro EASE (__easing())
+function __easing()
 {
     static instance = new (function() constructor {
 
@@ -51,15 +51,15 @@ function ___easing()
                       return      power(2,  20 * z - 10)  / 2   
     };
 
-    global.___EASING_D1 = 2.75;
-    global.___EASING_N1 = 7.5625;
+    global.__EASING_D1 = 2.75;
+    global.__EASING_N1 = 7.5625;
 
     OUT_BOUNCE = function(z)
     {
-             if (z < 1.0 / global.___EASING_D1) {                                     return global.___EASING_N1 * z * z;          }
-        else if (z < 2.0 / global.___EASING_D1) { z -= (1.5   / global.___EASING_D1); return global.___EASING_N1 * z * z + 0.75;   }
-        else if (z < 2.5 / global.___EASING_D1) { z -= (2.25  / global.___EASING_D1); return global.___EASING_N1 * z * z + 0.9375; }
-                                                  z -= (2.625 / global.___EASING_D1); return global.___EASING_N1 * z * z + 0.984375;
+             if (z < 1.0 / global.__EASING_D1) {                                     return global.__EASING_N1 * z * z;          }
+        else if (z < 2.0 / global.__EASING_D1) { z -= (1.5   / global.__EASING_D1);  return global.__EASING_N1 * z * z + 0.75;   }
+        else if (z < 2.5 / global.__EASING_D1) { z -= (2.25  / global.__EASING_D1);  return global.__EASING_N1 * z * z + 0.9375; }
+                                                  z -= (2.625 / global.__EASING_D1); return global.__EASING_N1 * z * z + 0.984375;
     };
 
     INOUT_BOUNCE = function(z)
@@ -70,37 +70,37 @@ function ___easing()
 
     IN_BOUNCE = function(z){ return 1 - OUT_BOUNCE(1 - z); };
 
-    global.___EASING_SQRT = function(z){ return ((sign(z) == 1) ? sqrt(z) : 0); }
+    global.__EASING_SQRT = function(z){ return ((sign(z) == 1) ? sqrt(z) : 0); }
 
-    IN_CIRC    = function(z){ return 1 - global.___EASING_SQRT(1 - power( z,      2)); };
-    OUT_CIRC   = function(z){ return     global.___EASING_SQRT(1 - power((z - 1), 2)); };
+    IN_CIRC    = function(z){ return 1 - global.__EASING_SQRT(1 - power( z,      2)); };
+    OUT_CIRC   = function(z){ return     global.__EASING_SQRT(1 - power((z - 1), 2)); };
     INOUT_CIRC = function(z)
     {
-        if (z >= 0.5) return (1 + global.___EASING_SQRT(1 - power(-2 * z + 2, 2))) / 2;
-                      return (1 - global.___EASING_SQRT(1 - power( 2 * z,     2))) / 2;
+        if (z >= 0.5) return (1 + global.__EASING_SQRT(1 - power(-2 * z + 2, 2))) / 2;
+                      return (1 - global.__EASING_SQRT(1 - power( 2 * z,     2))) / 2;
     };
 
-    global.___EASING_C1 = 1.70158;
-    global.___EASING_C2 = global.___EASING_C1 * 1.525;
-    global.___EASING_C3 = global.___EASING_C1 + 1;
+    global.__EASING_C1 = 1.70158;
+    global.__EASING_C2 = global.__EASING_C1 * 1.525;
+    global.__EASING_C3 = global.__EASING_C1 + 1;
 
-    IN_BACK    = function(z){ return     global.___EASING_C3 * power(z,     3) -global.___EASING_C1 * power(z,     2); };
-    OUT_BACK   = function(z){ return 1 + global.___EASING_C3 * power(z - 1, 3) +global.___EASING_C1 * power(z - 1, 2); };
+    IN_BACK    = function(z){ return     global.__EASING_C3 * power(z,     3) -global.__EASING_C1 * power(z,     2); };
+    OUT_BACK   = function(z){ return 1 + global.__EASING_C3 * power(z - 1, 3) +global.__EASING_C1 * power(z - 1, 2); };
     INOUT_BACK = function(z)
     {
-        if (z >= 0.5) return (power(2 * z - 2, 2) * ((global.___EASING_C2 + 1) * (z * 2 - 2) + global.___EASING_C2) + 2) / 2;
-                      return (power(2 * z,     2) * ((global.___EASING_C2 + 1) * (z * 2    ) - global.___EASING_C2)    ) / 2;
+        if (z >= 0.5) return (power(2 * z - 2, 2) * ((global.__EASING_C2 + 1) * (z * 2 - 2) + global.__EASING_C2) + 2) / 2;
+                      return (power(2 * z,     2) * ((global.__EASING_C2 + 1) * (z * 2    ) - global.__EASING_C2)    ) / 2;
     };
 
-    global.___EASING_C4 = (2 * pi) / 3;
-    global.___EASING_C5 = (2 * pi) / 4.5;
+    global.__EASING_C4 = (2 * pi) / 3;
+    global.__EASING_C5 = (2 * pi) / 4.5;
 
     IN_ELASTIC = function(z)
     {
         if (z == 0.0) return 0;
         if (z == 1.0) return 1;
 
-        return -power(2, 10 * z - 10) * sin((z * 10 - 10.75) * global.___EASING_C4);
+        return -power(2, 10 * z - 10) * sin((z * 10 - 10.75) * global.__EASING_C4);
     };
 
     OUT_ELASTIC = function(z)
@@ -108,15 +108,15 @@ function ___easing()
         if (z == 0.0) return 0;
         if (z == 1.0) return 1;
 
-        return power(2, -10 * z) * sin((z * 10 - 0.75) * global.___EASING_C4) + 1;
+        return power(2, -10 * z) * sin((z * 10 - 0.75) * global.__EASING_C4) + 1;
     };
 
     INOUT_ELASTIC = function(z)
     {
         if (z == 0.0) return 0;
         if (z == 1.0) return 1;
-        if (z >= 0.5) return   power(2, -20 * z + 10) * sin((20 * z - 11.125) * global.___EASING_C5)  / 2 + 1;
-                      return -(power(2,  20 * z - 10) * sin((20 * z - 11.125) * global.___EASING_C5)) / 2;
+        if (z >= 0.5) return   power(2, -20 * z + 10) * sin((20 * z - 11.125) * global.__EASING_C5)  / 2 + 1;
+                      return -(power(2,  20 * z - 10) * sin((20 * z - 11.125) * global.__EASING_C5)) / 2;
     }
        
     SMOOTHESTSTEP = function(z){ return -20 * power(z, 7) + 70 * power(z, 6) - 84 * power(z, 5) + 35 * power(z, 4); };
