@@ -4,13 +4,13 @@ Easing for GMS2
 
 ease
   function: Ease within unit interval
-  argument: Number, Easing (Optional)
-  returned: Number
+  argument: Position, Easing (Optional)
+  returned: Real
 
 tween
   function: Ease positional value
   argument: Start, End, Position, Easing (Optional)
-  returned: Number
+  returned: Real
     
 Reference
   sol.gfxile.net/interpolation
