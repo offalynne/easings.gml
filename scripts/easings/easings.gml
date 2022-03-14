@@ -56,10 +56,10 @@ function __easing()
 
     OUT_BOUNCE = function(z)
     {
-             if (z < 1.0 / global.__EASING_D1) {                                     return global.__EASING_N1 * z * z;          }
-        else if (z < 2.0 / global.__EASING_D1) { z -= (1.5   / global.__EASING_D1);  return global.__EASING_N1 * z * z + 0.75;   }
-        else if (z < 2.5 / global.__EASING_D1) { z -= (2.25  / global.__EASING_D1);  return global.__EASING_N1 * z * z + 0.9375; }
-                                                  z -= (2.625 / global.__EASING_D1); return global.__EASING_N1 * z * z + 0.984375;
+             if (z < 1.0 / global.__EASING_D1) {                                    return global.__EASING_N1 * z * z;          }
+        else if (z < 2.0 / global.__EASING_D1) { z -= (1.5   / global.__EASING_D1); return global.__EASING_N1 * z * z + 0.75;   }
+        else if (z < 2.5 / global.__EASING_D1) { z -= (2.25  / global.__EASING_D1); return global.__EASING_N1 * z * z + 0.9375; }
+                                                 z -= (2.625 / global.__EASING_D1); return global.__EASING_N1 * z * z + 0.984375;
     };
 
     INOUT_BOUNCE = function(z)
