@@ -2,14 +2,12 @@ easings.gml
 
 Easing for GMS2
 
-ease
+ease(position, [easing])
   function: Ease within unit interval
-  argument: Position, Easing (Optional)
   returned: Real
 
-tween
+tween(start, end, position, [easing])
   function: Ease positional value
-  argument: Start, End, Position, Easing (Optional)
   returned: Real
     
 Reference
