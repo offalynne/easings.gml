@@ -9,10 +9,6 @@ ease(position, [easing])
 tween(start, end, position, [easing])
   function: Ease positional value
   returned: Real
-    
-Reference
-  sol.gfxile.net/interpolation
-  easings.net
 
 Easings (EASE.*)
  LINEAR (none)
@@ -22,6 +18,10 @@ Easings (EASE.*)
  IN_/​OUT_/​INOUT_*
   QUAD, CUBIC, QUART, QUINT, SINE,
   EXPO, BOUNCE, CIRC, BACK, ELASTIC
+
+Reference
+  sol.gfxile.net/interpolation
+  easings.net
 
 @offalynne, 2021
 MIT licensed, use as you please
