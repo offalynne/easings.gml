@@ -6,7 +6,7 @@ draw_test = function()
     // init
     static _x = 0;
     static _sign = 1;
-    static _names = 
+    static _names = // variable_struct_get_names(EASE);
     [
         "LINEAR", "SMOOTHSTEP", "SMOOTHERSTEP", "SMOOTHESTSTEP",
         
