@@ -22,6 +22,9 @@ Easings (EASE.*)
 Reference
   sol.gfxile.net/interpolation
   easings.net
+ 
+Easing with Animation Curves
+  github.com/DragoniteSpam/Easings
 
 @offalynne, 2021
 MIT licensed, use as you please
