@@ -5,10 +5,10 @@
 //   sol.gfxile.net/interpolation
 //   github.com/ai/easings.net
 
-function ease(_value, _ease_type = EASE.LINEAR)
+function ease(_amount, _ease_type = EASE.LINEAR)
 {
     gml_pragma("forceinline");
-    return _ease_type(clamp(_value, 0, 1));
+    return _ease_type(clamp(_amount, 0, 1));
 }
 
 function tween(_from, _to, _amount, _ease_type = EASE.LINEAR)
