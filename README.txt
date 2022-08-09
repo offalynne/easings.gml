@@ -20,7 +20,7 @@ Easings (EASE.*)
   EXPO, BOUNCE, CIRC, BACK, ELASTIC
 
 Reference
-  sol.gfxile.net/interpolation
+  solhsa.com/interpolation/
   easings.net
  
 Easing with Animation Curves
