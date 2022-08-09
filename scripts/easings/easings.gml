@@ -2,7 +2,7 @@
 // github.com/offalynne/easings.gml
 //
 // refs
-//   sol.gfxile.net/interpolation
+//   solhsa.com/interpolation/
 //   github.com/ai/easings.net
 
 function ease(_amount, _ease_type = EASE.LINEAR)
