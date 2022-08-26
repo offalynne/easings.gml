@@ -72,14 +72,14 @@ function     __easing()
 
     IN_BOUNCE = function(z){ return 1 - OUT_BOUNCE(1 - z); };
 
-    global.__SQRT_SAFE = function(z){ return ((sign(z) == 1) ? sqrt(z) : 0); }
+    global.__EASING_SQRT = function(z){ return ((sign(z) == 1) ? sqrt(z) : 0); }
 
-    IN_CIRC    = function(z){ return 1 - global.__SQRT_SAFE(1 - power( z,      2)); };
-    OUT_CIRC   = function(z){ return     global.__SQRT_SAFE(1 - power((z - 1), 2)); };
+    IN_CIRC    = function(z){ return 1 - global.__EASING_SQRT(1 - power( z,      2)); };
+    OUT_CIRC   = function(z){ return     global.__EASING_SQRT(1 - power((z - 1), 2)); };
     INOUT_CIRC = function(z)
     {
-        if (z >= 0.5) return (1 + global.__SQRT_SAFE(1 - power(-2 * z + 2, 2))) / 2;
-                      return (1 - global.__SQRT_SAFE(1 - power( 2 * z,     2))) / 2;
+        if (z >= 0.5) return (1 + global.__EASING_SQRT(1 - power(-2 * z + 2, 2))) / 2;
+                      return (1 - global.__EASING_SQRT(1 - power( 2 * z,     2))) / 2;
     };
 
     global.__EASING_C1 = 1.70158;
