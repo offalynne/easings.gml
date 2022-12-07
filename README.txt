@@ -24,7 +24,7 @@ Reference
   easings.net
  
 Easing with Animation Curves
-  github.com/DragoniteSpam/Easings
+  github.com/JujuAdams/Easing-Curves
 
 @offalynne, 2021
 MIT licensed, use as you please
