@@ -1,6 +1,6 @@
 easings.gml
 
-Computational easing for GMS2
+Computational easings for GMS2
 
 ease(position, [easing])
   function: Ease within unit interval
