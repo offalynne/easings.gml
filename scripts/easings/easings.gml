@@ -17,12 +17,12 @@ function tween(_from, _to, _amount, _ease_type = EASE_LINEAR)
     return _from + (_to - _from) * ease(_amount, _ease_type);
 }
 
-global.__2pi = 2.0 * pi;
-
 function __easing()
 {
     static instance = new (function() constructor {
     
+    global.__2pi = 2.0 * pi;
+
     //Easing constants    
     __const_c1 = 1.70158;
     __const_c2 = __const_c1 * 1.525;
