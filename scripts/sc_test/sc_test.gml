@@ -1,4 +1,4 @@
-draw_test = function()
+function sc_test()
 {
     // config
     var _animation_interval = 5; // in seconds
@@ -6,21 +6,39 @@ draw_test = function()
     // init
     static _x = 0;
     static _sign = 1;
-    static _names = // variable_struct_get_names(EASE);
+    
+    static _eases = 
+    [ 
+        EASE_LINEAR, EASE_SMOOTHSTEP, EASE_SMOOTHERSTEP, EASE_SMOOTHESTSTEP, 
+        
+        EASE_IN_QUAD,   EASE_IN_CUBIC, EASE_IN_QUART,  EASE_IN_QUINT,  
+        EASE_IN_CIRC,   EASE_IN_SINE,  EASE_IN_EXPO, 
+        EASE_IN_BOUNCE, EASE_IN_BACK,  EASE_IN_ELASTIC, 
+        
+        EASE_OUT_QUAD, EASE_OUT_CUBIC, EASE_OUT_QUART, EASE_OUT_QUINT, 
+        EASE_OUT_SINE, EASE_OUT_EXPO, EASE_OUT_BOUNCE, 
+        EASE_OUT_CIRC, EASE_OUT_BACK, EASE_OUT_ELASTIC, 
+        
+        EASE_INOUT_QUAD, EASE_INOUT_CUBIC, EASE_INOUT_QUART, EASE_INOUT_QUINT, 
+        EASE_INOUT_SINE, EASE_INOUT_EXPO, EASE_INOUT_BOUNCE, EASE_INOUT_CIRC,
+        EASE_INOUT_BACK, EASE_INOUT_ELASTIC 
+    ];
+    
+    static _names =
     [
         "LINEAR", "SMOOTHSTEP", "SMOOTHERSTEP", "SMOOTHESTSTEP",
         
-        "IN_QUAD",   "IN_CUBIC", "IN_QUART", "IN_QUINT",
+        "IN_QUAD",   "IN_CUBIC", "IN_QUART", "IN QUINT",
         "IN_SINE",   "IN_CIRC",  "IN_EXPO",
         "IN_BOUNCE", "IN_BACK",  "IN_ELASTIC",
         
-        "OUT_QUAD",  "OUT_CUBIC", "OUT_QUART", "OUT_QUINT",
-        "OUT_SINE",  "OUT_EXPO",  "OUT_BOUNCE",
-        "OUT_CIRC",  "OUT_BACK",  "OUT_ELASTIC",
+        "OUT_QUAD", "OUT_CUBIC", "OUT_QUART", "OUT_QUINT",
+        "OUT_SINE", "OUT_EXPO",  "OUT_BOUNCE",
+        "OUT_CIRC", "OUT_BACK",  "OUT_ELASTIC",
         
-        "INOUT_QUAD",  "INOUT_CUBIC", "INOUT_QUART", "INOUT_QUINT",
-        "INOUT_SINE",  "INOUT_EXPO",  "INOUT_BOUNCE",
-        "INOUT_BACK",  "INOUT_CIRC",  "INOUT_ELASTIC"
+        "INOUT_QUAD", "INOUT_CUBIC", "INOUT_QUART", "INOUT_QUINT",
+        "INOUT_SINE", "INOUT_EXPO",  "INOUT_BOUNCE",
+        "INOUT_BACK", "INOUT_CIRC",  "INOUT_ELASTIC"
     ];
 
     // animate
@@ -44,7 +62,7 @@ draw_test = function()
         
     // fillbars
     var _i = 0;
-    var _len = array_length(_names);
+    var _len = array_length(_eases);
     var _bar = room_height / _len;
     var _hover = floor((mouse_y / room_height) * _len);
 
@@ -56,7 +74,7 @@ draw_test = function()
         (
             _pad, 
             _i * _bar,
-            _pad + (room_width - _pad*2) * tween(0, 1, _x, variable_instance_get(EASE, _names[_i])),
+            _pad + (room_width - _pad*2) * tween(0, 1, _x, _eases[_i]),
             (_i + 1) * _bar, 
             false
         );
@@ -72,7 +90,7 @@ draw_test = function()
         }
 
         // label
-        draw_text(_pad, -2 + _i * _bar, "EASE." + _names[_i]);
+        draw_text(_pad, -2 + _i * _bar, "EASE_" + _names[_i]);
                 
         ++_i;
     }

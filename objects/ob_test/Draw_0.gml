@@ -1,1 +1,1 @@
-draw_test();
+sc_test();
