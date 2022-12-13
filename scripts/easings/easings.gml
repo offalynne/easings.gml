@@ -72,7 +72,7 @@ function __easing()
              if (_z < 1.0 / __const_d1){                             return __const_n1 * _z * _z;          }
         else if (_z < 2.0 / __const_d1){ _z -= (1.5   / __const_d1); return __const_n1 * _z * _z + 0.75;   }
         else if (_z < 2.5 / __const_d1){ _z -= (2.25  / __const_d1); return __const_n1 * _z * _z + 0.9375; }
-                                                       _z -= (2.625 / __const_d1); return __const_n1 * _z * _z + 0.984375;
+                                         _z -= (2.625 / __const_d1); return __const_n1 * _z * _z + 0.984375;
     };
 
     __inout_bounce = function(_z)
