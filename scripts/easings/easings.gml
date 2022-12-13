@@ -20,6 +20,20 @@ function tween(_from, _to, _amount, _ease_type = EASE_LINEAR)
 function __easing()
 {
     static instance = new (function() constructor {
+        
+    global.__2pi = 2.0 * pi;
+        
+    //Easing constants
+    __const_c1 = 1.70158;
+    __const_c2 = __const_c1 * 1.525;
+    __const_c3 = __const_c1 + 1;
+    __const_c4 = global.__2pi / 3;
+    __const_c5 = global.__2pi / 4.5;
+    __const_d1 = 2.75;
+    __const_n1 = 7.5625;
+    
+    //Episilon-safe square root
+    __sqrt = function(_z){ return ((sign(_z) == 1) ? sqrt(_z) : 0); }
 
     __linear = function(_z){ return _z; };
 
@@ -52,15 +66,12 @@ function __easing()
                        return      power(2,  20 * _z - 10)  / 2   
     };
 
-    global.__const_easing_d1 = 2.75;
-    global.__const_easing_n1 = 7.5625;
-
     __out_bounce = function(_z)
     {
-             if (_z < 1.0 / global.__const_easing_d1){                                           return global.__const_easing_n1 * _z * _z;          }
-        else if (_z < 2.0 / global.__const_easing_d1){ _z -= (1.5   / global.__const_easing_d1); return global.__const_easing_n1 * _z * _z + 0.75;   }
-        else if (_z < 2.5 / global.__const_easing_d1){ _z -= (2.25  / global.__const_easing_d1); return global.__const_easing_n1 * _z * _z + 0.9375; }
-                                                       _z -= (2.625 / global.__const_easing_d1); return global.__const_easing_n1 * _z * _z + 0.984375;
+             if (_z < 1.0 / __const_d1){                                           return __const_n1 * _z * _z;          }
+        else if (_z < 2.0 / __const_d1){ _z -= (1.5   / __const_d1); return __const_n1 * _z * _z + 0.75;   }
+        else if (_z < 2.5 / __const_d1){ _z -= (2.25  / __const_d1); return __const_n1 * _z * _z + 0.9375; }
+                                                       _z -= (2.625 / __const_d1); return __const_n1 * _z * _z + 0.984375;
     };
 
     __inout_bounce = function(_z)
@@ -71,37 +82,28 @@ function __easing()
 
     __in_bounce = function(_z){ return 1 - __out_bounce(1 - _z); };
 
-    global.__const_easing_sqrt = function(_z){ return ((sign(_z) == 1) ? sqrt(_z) : 0); }
-
-    __in_circ    = function(_z){ return 1 - global.__const_easing_sqrt(1 - power( _z,      2)); };
-    __out_circ   = function(_z){ return     global.__const_easing_sqrt(1 - power((_z - 1), 2)); };
+    __in_circ    = function(_z){ return 1 - __sqrt(1 - power( _z,      2)); };
+    __out_circ   = function(_z){ return     __sqrt(1 - power((_z - 1), 2)); };
     __inout_circ = function(_z)
     {
-        if (_z >= 0.5) return (1 + global.__const_easing_sqrt(1 - power(-2 * _z + 2, 2))) / 2;
-                       return (1 - global.__const_easing_sqrt(1 - power( 2 * _z,     2))) / 2;
+        if (_z >= 0.5) return (1 + __sqrt(1 - power(-2 * _z + 2, 2))) / 2;
+                       return (1 - __sqrt(1 - power( 2 * _z,     2))) / 2;
     };
 
-    global.__const_easing_c1 = 1.70158;
-    global.__const_easing_c2 = global.__const_easing_c1 * 1.525;
-    global.__const_easing_c3 = global.__const_easing_c1 + 1;
-
-    __in_back    = function(_z){ return     global.__const_easing_c3 * power(_z,     3) - global.__const_easing_c1 * power(_z,     2); };
-    __out_back   = function(_z){ return 1 + global.__const_easing_c3 * power(_z - 1, 3) + global.__const_easing_c1 * power(_z - 1, 2); };
+    __in_back    = function(_z){ return     __const_c3 * power(_z,     3) - __const_c1 * power(_z,     2); };
+    __out_back   = function(_z){ return 1 + __const_c3 * power(_z - 1, 3) + __const_c1 * power(_z - 1, 2); };
     __inout_back = function(_z)
     {
-        if (_z >= 0.5) return (power(2 * _z - 2, 2) * ((global.__const_easing_c2 + 1) * (_z * 2 - 2) + global.__const_easing_c2) + 2) / 2;
-                       return (power(2 * _z,     2) * ((global.__const_easing_c2 + 1) * (_z * 2    ) - global.__const_easing_c2)    ) / 2;
+        if (_z >= 0.5) return (power(2 * _z - 2, 2) * ((__const_c2 + 1) * (_z * 2 - 2) + __const_c2) + 2) / 2;
+                       return (power(2 * _z,     2) * ((__const_c2 + 1) * (_z * 2    ) - __const_c2)    ) / 2;
     };
-
-    global.__const_easing_c4 = (2 * pi) / 3;
-    global.__const_easing_c5 = (2 * pi) / 4.5;
 
     __in_elastic = function(_z)
     {
         if (_z == 0.0) return 0;
         if (_z == 1.0) return 1;
 
-        return -power(2, 10 * _z - 10) * sin((_z * 10 - 10.75) * global.__const_easing_c4);
+        return -power(2, 10 * _z - 10) * sin((_z * 10 - 10.75) * __const_c4);
     };
 
     __out_elastic = function(_z)
@@ -109,15 +111,15 @@ function __easing()
         if (_z == 0.0) return 0;
         if (_z == 1.0) return 1;
 
-        return power(2, -10 * _z) * sin((_z * 10 - 0.75) * global.__const_easing_c4) + 1;
+        return power(2, -10 * _z) * sin((_z * 10 - 0.75) * __const_c4) + 1;
     };
 
     __inout_elastic = function(_z)
     {
         if (_z == 0.0) return 0;
         if (_z == 1.0) return 1;
-        if (_z >= 0.5) return   power(2, -20 * _z + 10) * sin((20 * _z - 11.125) * global.__const_easing_c5)  / 2 + 1;
-                       return -(power(2,  20 * _z - 10) * sin((20 * _z - 11.125) * global.__const_easing_c5)) / 2;
+        if (_z >= 0.5) return   power(2, -20 * _z + 10) * sin((20 * _z - 11.125) * __const_c5)  / 2 + 1;
+                       return -(power(2,  20 * _z - 10) * sin((20 * _z - 11.125) * __const_c5)) / 2;
     }
        
     __smootheststep = function(_z){ return -20 * power(_z, 7) + 70 * power(_z, 6) - 84 * power(_z, 5) + 35 * power(_z, 4); };
