@@ -7,9 +7,9 @@
 
 function ease(_amount, _easing = EASE_LINEAR)
 {
-    gml_pragma("forceinline");
-    //if (!is_method(variable_struct_get(__easings(), _easing))) show_error("No such easing: " + string(_easing), true); else //Optional error checking    
-    return variable_struct_get(__easings(), _easing)(_amount);
+    static __easings_struct = __easings();
+    //if (!is_method(__easings_struct[$ _easing])) show_error("No such easing: " + string(_easing), true); else //Optional error checking
+    return __easings_struct[$ _easing](_amount);
 }
 
 function tween(_from, _to, _amount, _easing = EASE_LINEAR)
