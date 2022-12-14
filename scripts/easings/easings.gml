@@ -22,7 +22,7 @@ function __easings()
 {
     static instance = new (function() constructor {
     
-    global.__2pi = 2.0 * pi;
+    global.__2pi = 2 * pi;
 
     //Easing constants    
     __const_c1 = 1.70158;
