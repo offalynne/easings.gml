@@ -5,19 +5,19 @@
 //   solhsa.com/interpolation/
 //   github.com/ai/easings.net
 
-function ease(_amount, _ease_type = EASE_LINEAR)
+function ease(_amount, _easing = EASE_LINEAR)
 {
     gml_pragma("forceinline");
-    return _ease_type(clamp(_amount, 0, 1));
+    return _easing(clamp(_amount, 0, 1));
 }
 
-function tween(_from, _to, _amount, _ease_type = EASE_LINEAR)
+function tween(_from, _to, _amount, _easing = EASE_LINEAR)
 {
     gml_pragma("forceinline");
-    return _from + (_to - _from) * ease(_amount, _ease_type);
+    return _from + (_to - _from) * ease(_amount, _easing);
 }
 
-function __easing()
+function __easings()
 {
     static instance = new (function() constructor {
     
@@ -131,37 +131,37 @@ function __easing()
     return instance;
 };
 
-#macro EASE_LINEAR         (__easing()).__linear
-#macro EASE_SMOOTHSTEP     (__easing()).__smoothstep
-#macro EASE_SMOOTHERSTEP   (__easing()).__smootherstep
-#macro EASE_SMOOTHESTSTEP  (__easing()).__smootheststep
-#macro EASE_IN_QUAD        (__easing()).__in_quad
-#macro EASE_IN_CUBIC       (__easing()).__in_cubic
-#macro EASE_IN_QUART       (__easing()).__in_quart
-#macro EASE_IN_QUINT       (__easing()).__in_quint
-#macro EASE_IN_SINE        (__easing()).__in_sine
-#macro EASE_IN_EXPO        (__easing()).__in_expo
-#macro EASE_IN_BOUNCE      (__easing()).__in_bounce
-#macro EASE_IN_CIRC        (__easing()).__in_circ
-#macro EASE_IN_BACK        (__easing()).__in_back
-#macro EASE_IN_ELASTIC     (__easing()).__in_elastic
-#macro EASE_OUT_QUAD       (__easing()).__out_quad
-#macro EASE_OUT_CUBIC      (__easing()).__out_cubic
-#macro EASE_OUT_QUART      (__easing()).__out_quart
-#macro EASE_OUT_QUINT      (__easing()).__out_quint
-#macro EASE_OUT_SINE       (__easing()).__out_sine
-#macro EASE_OUT_EXPO       (__easing()).__out_expo
-#macro EASE_OUT_BOUNCE     (__easing()).__out_bounce
-#macro EASE_OUT_CIRC       (__easing()).__out_circ
-#macro EASE_OUT_BACK       (__easing()).__out_back
-#macro EASE_OUT_ELASTIC    (__easing()).__out_elastic
-#macro EASE_INOUT_QUAD     (__easing()).__inout_quad
-#macro EASE_INOUT_CUBIC    (__easing()).__inout_cubic
-#macro EASE_INOUT_QUART    (__easing()).__inout_quart
-#macro EASE_INOUT_QUINT    (__easing()).__inout_quint
-#macro EASE_INOUT_SINE     (__easing()).__inout_sine
-#macro EASE_INOUT_EXPO     (__easing()).__inout_expo
-#macro EASE_INOUT_BOUNCE   (__easing()).__inout_bounce
-#macro EASE_INOUT_CIRC     (__easing()).__inout_circ
-#macro EASE_INOUT_BACK     (__easing()).__inout_back
-#macro EASE_INOUT_ELASTIC  (__easing()).__inout_elastic
+#macro EASE_LINEAR         (__easings()).__linear
+#macro EASE_SMOOTHSTEP     (__easings()).__smoothstep
+#macro EASE_SMOOTHERSTEP   (__easings()).__smootherstep
+#macro EASE_SMOOTHESTSTEP  (__easings()).__smootheststep
+#macro EASE_IN_QUAD        (__easings()).__in_quad
+#macro EASE_IN_CUBIC       (__easings()).__in_cubic
+#macro EASE_IN_QUART       (__easings()).__in_quart
+#macro EASE_IN_QUINT       (__easings()).__in_quint
+#macro EASE_IN_SINE        (__easings()).__in_sine
+#macro EASE_IN_EXPO        (__easings()).__in_expo
+#macro EASE_IN_BOUNCE      (__easings()).__in_bounce
+#macro EASE_IN_CIRC        (__easings()).__in_circ
+#macro EASE_IN_BACK        (__easings()).__in_back
+#macro EASE_IN_ELASTIC     (__easings()).__in_elastic
+#macro EASE_OUT_QUAD       (__easings()).__out_quad
+#macro EASE_OUT_CUBIC      (__easings()).__out_cubic
+#macro EASE_OUT_QUART      (__easings()).__out_quart
+#macro EASE_OUT_QUINT      (__easings()).__out_quint
+#macro EASE_OUT_SINE       (__easings()).__out_sine
+#macro EASE_OUT_EXPO       (__easings()).__out_expo
+#macro EASE_OUT_BOUNCE     (__easings()).__out_bounce
+#macro EASE_OUT_CIRC       (__easings()).__out_circ
+#macro EASE_OUT_BACK       (__easings()).__out_back
+#macro EASE_OUT_ELASTIC    (__easings()).__out_elastic
+#macro EASE_INOUT_QUAD     (__easings()).__inout_quad
+#macro EASE_INOUT_CUBIC    (__easings()).__inout_cubic
+#macro EASE_INOUT_QUART    (__easings()).__inout_quart
+#macro EASE_INOUT_QUINT    (__easings()).__inout_quint
+#macro EASE_INOUT_SINE     (__easings()).__inout_sine
+#macro EASE_INOUT_EXPO     (__easings()).__inout_expo
+#macro EASE_INOUT_BOUNCE   (__easings()).__inout_bounce
+#macro EASE_INOUT_CIRC     (__easings()).__inout_circ
+#macro EASE_INOUT_BACK     (__easings()).__inout_back
+#macro EASE_INOUT_ELASTIC  (__easings()).__inout_elastic

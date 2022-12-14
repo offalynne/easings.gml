@@ -4,8 +4,9 @@ function sc_test()
     var _animation_interval = 5; // in seconds
 
     // init
-    static _x = 0;
-    static _sign = 1;
+    static __x     = 0;
+    static __sign  = 1;
+    static __about = false;
     
     static _eases = 
     [ 
@@ -42,16 +43,16 @@ function sc_test()
     ];
 
     // animate
-    _x += (delta_time / (1000000 * _animation_interval)) * _sign;    
-    if (_x > 1.0)
+    __x += (delta_time / (1000000 * _animation_interval)) * __sign;    
+    if (__x > 1.0)
     {
-        _x = 1 - (_x mod 1);
-        _sign = -1;
+        __x = 1 - (__x mod 1);
+        __sign = -1;
     }
-    else if (sign(_x) == -1)
+    else if (sign(__x) == -1)
     {
-        _x = -_x;
-        _sign = 1;
+        __x = -__x;
+        __sign = 1;
     }
 
     // bg
@@ -74,7 +75,7 @@ function sc_test()
         (
             _pad, 
             _i * _bar,
-            _pad + (room_width - _pad*2) * tween(0, 1, _x, _eases[_i]),
+            _pad + (room_width - _pad*2) * tween(0, 1, __x, _eases[_i]),
             (_i + 1) * _bar, 
             false
         );
@@ -98,6 +99,33 @@ function sc_test()
     // overlay
     draw_set_alpha(0.125);
     draw_set_color(c_silver);
-    draw_rectangle(_pad, 0, _pad + (room_width  - (_pad * 2)) * _x, room_height, false);
+    draw_rectangle(_pad, 0, _pad + (room_width  - (_pad * 2)) * __x, room_height, false);
     draw_set_alpha(1);
+    
+    // about button
+    var _x1 = room_width - 50;
+    var _x2 = room_width - 10;
+    var _y1 = 10;
+    var _y2 = 50;
+    draw_rectangle(_x1, _y1, _x2, _y2, !__about);
+    
+    // handle click
+    if (!__about && (mouse_x > _x1) && (mouse_x < _x2) && (mouse_y > _y1) && (mouse_y < _y2))
+    {
+        window_set_cursor(cr_handpoint);
+        
+        if (mouse_check_button_pressed(mb_left))
+        {
+            __about = true;
+            url_open("https://easings.net/");
+        }
+    }
+    else if (window_get_cursor() != cr_default)
+    {
+        window_set_cursor(cr_default);
+    }
+    
+    if (__about) draw_set_color(c_black);
+    
+    draw_text(_x1 + 15, _y1 + 10, "?");
 }
