@@ -4,9 +4,9 @@ function sc_test()
     var _animation_interval = 5; // in seconds
 
     // init
-    static __x     = 0;
-    static __sign  = 1;
-    static __about = false;
+    static __x = 0;
+    static __sign = 1;
+    static __about_seen = false;
     
     static _eases = 
     [ 
@@ -23,23 +23,6 @@ function sc_test()
         EASE_INOUT_QUAD, EASE_INOUT_CUBIC, EASE_INOUT_QUART, EASE_INOUT_QUINT, 
         EASE_INOUT_SINE, EASE_INOUT_EXPO, EASE_INOUT_BOUNCE, EASE_INOUT_CIRC,
         EASE_INOUT_BACK, EASE_INOUT_ELASTIC 
-    ];
-    
-    static _names =
-    [
-        "LINEAR", "SMOOTHSTEP", "SMOOTHERSTEP", "SMOOTHESTSTEP",
-        
-        "IN_QUAD",   "IN_CUBIC", "IN_QUART", "IN QUINT",
-        "IN_SINE",   "IN_CIRC",  "IN_EXPO",
-        "IN_BOUNCE", "IN_BACK",  "IN_ELASTIC",
-        
-        "OUT_QUAD", "OUT_CUBIC", "OUT_QUART", "OUT_QUINT",
-        "OUT_SINE", "OUT_EXPO",  "OUT_BOUNCE",
-        "OUT_CIRC", "OUT_BACK",  "OUT_ELASTIC",
-        
-        "INOUT_QUAD", "INOUT_CUBIC", "INOUT_QUART", "INOUT_QUINT",
-        "INOUT_SINE", "INOUT_EXPO",  "INOUT_BOUNCE",
-        "INOUT_BACK", "INOUT_CIRC",  "INOUT_ELASTIC"
     ];
 
     // animate
@@ -91,7 +74,7 @@ function sc_test()
         }
 
         // label
-        draw_text(_pad, -2 + _i * _bar, "EASE_" + _names[_i]);
+        draw_text(_pad, -2 + _i * _bar, _eases[_i]);
                 
         ++_i;
     }
@@ -107,16 +90,18 @@ function sc_test()
     var _x2 = room_width - 10;
     var _y1 = 10;
     var _y2 = 50;
-    draw_rectangle(_x1, _y1, _x2, _y2, !__about);
+    
+    if (__about_seen) draw_set_color(c_dkgray);
+    draw_rectangle(_x1, _y1, _x2, _y2, false);
     
     // handle click
-    if (!__about && (mouse_x > _x1) && (mouse_x < _x2) && (mouse_y > _y1) && (mouse_y < _y2))
+    if (!__about_seen && (mouse_x > _x1) && (mouse_x < _x2) && (mouse_y > _y1) && (mouse_y < _y2))
     {
         window_set_cursor(cr_handpoint);
         
         if (mouse_check_button_pressed(mb_left))
         {
-            __about = true;
+            __about_seen = true;
             url_open("https://easings.net/");
         }
     }
@@ -125,7 +110,6 @@ function sc_test()
         window_set_cursor(cr_default);
     }
     
-    if (__about) draw_set_color(c_black);
-    
+    draw_set_color(c_black);
     draw_text(_x1 + 15, _y1 + 10, "?");
 }
