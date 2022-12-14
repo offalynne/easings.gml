@@ -8,6 +8,7 @@
 function ease(_amount, _easing = EASE_LINEAR)
 {
     gml_pragma("forceinline");
+    //if (!is_method(variable_struct_get(__easings(), _easing))) show_error("No such easing: " + string(_easing), true); else //Optional error checking    
     return variable_struct_get(__easings(), _easing)(_amount);
 }
 
