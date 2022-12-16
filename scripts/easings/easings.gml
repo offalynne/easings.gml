@@ -46,6 +46,7 @@ function __easings()
         }
     }
     
+    //Setup interface
     var _add_easing = function(_name, _value, _struct = self)
     { 
         variable_struct_set(_struct, string_replace_all("__" + _name, " ", "_"),  new __easing("ease " + _name, _value));
@@ -80,7 +81,7 @@ function __easings()
         if (_z == 0.0) return 0;
         if (_z == 1.0) return 1;
         if (_z >= 0.5) return (2 - power(2, -20 * _z + 10)) / 2;
-                        return      power(2,  20 * _z - 10)  / 2   
+                        return     power(2,  20 * _z - 10)  / 2   
     });
 
     _add_easing("out bounce", function(_z)
