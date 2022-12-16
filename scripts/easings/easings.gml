@@ -139,8 +139,8 @@ function __easings()
     __ease_smoothstep    = function(_z){ return _z * _z * (3 - 2 * _z); };
     
     //Build easing instances
-    var _names = variable_struct_get_names(self);
     var _i = 0;
+    var _names = variable_struct_get_names(self);
     repeat(array_length(_names))
     {
         var _name = _names[_i];
