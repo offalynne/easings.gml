@@ -7,7 +7,7 @@
 
 function ease(_amount, _easing = EASE_LINEAR)
 {
-    return _easing.toValue(_amount);
+    return _easing.toValue(clamp(_amount, 0, 1));
 }
 
 function tween(_from, _to, _amount, _easing = EASE_LINEAR)
