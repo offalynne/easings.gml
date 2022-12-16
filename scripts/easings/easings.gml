@@ -33,8 +33,20 @@ function __easings()
     
     //Episilon-safe square root
     __sqrt = function(_z){ return ((sign(_z) == 1) ? sqrt(_z) : 0); }
+    
+    //Easing class
+    __easing = function(_name, _value) constructor
+    {
+        __name  = _name; 
+        toValue = _value;
+        
+        static toString = function()
+        {
+            return __name;
+        }
+    }
 
-    //Easings
+    //Easings functions    
     __ease_linear = function(_z){ return _z; };
 
     __ease_in_quad  = function(_z){ return power(_z, 2); };
@@ -125,41 +137,20 @@ function __easings()
     __ease_smootheststep = function(_z){ return -20 * power(_z, 7) + 70 * power(_z, 6) - 84 * power(_z, 5) + 35 * power(_z, 4); };
     __ease_smootherstep  = function(_z){ return _z * _z * _z * (_z * (_z * 6 - 15) + 10); };
     __ease_smoothstep    = function(_z){ return _z * _z * (3 - 2 * _z); };
-
-    __linear        = { toString: function(){ return "ease linear";             }, toValue: __ease_linear,        };
-    __smoothstep    = { toString: function(){ return "ease smoothstep";         }, toValue: __ease_smoothstep,    };
-    __smootherstep  = { toString: function(){ return "ease smootherstep";       }, toValue: __ease_smootherstep,  };
-    __smootheststep = { toString: function(){ return "ease smootheststep";      }, toValue: __ease_smootheststep, };
-    __in_quad       = { toString: function(){ return "ease in quad";            }, toValue: __ease_in_quad,       };
-    __in_cubic      = { toString: function(){ return "ease in cubic";           }, toValue: __ease_in_cubic,      };
-    __in_quart      = { toString: function(){ return "ease in quart";           }, toValue: __ease_in_quart,      };
-    __in_quint      = { toString: function(){ return "ease in quint";           }, toValue: __ease_in_quint,      };
-    __in_sine       = { toString: function(){ return "ease in sine";            }, toValue: __ease_in_sine,       };
-    __in_expo       = { toString: function(){ return "ease in expo";            }, toValue: __ease_in_expo,       };
-    __in_bounce     = { toString: function(){ return "ease in bounce";          }, toValue: __ease_in_bounce,     };
-    __in_circ       = { toString: function(){ return "ease in circ";            }, toValue: __ease_in_circ,       };
-    __in_back       = { toString: function(){ return "ease in back";            }, toValue: __ease_in_back,       };
-    __in_elastic    = { toString: function(){ return "ease in elastic";         }, toValue: __ease_in_elastic,    };
-    __out_quad      = { toString: function(){ return "ease out quad";           }, toValue: __ease_out_quad,      };
-    __out_cubic     = { toString: function(){ return "ease out cubic";          }, toValue: __ease_out_cubic,     };
-    __out_quart     = { toString: function(){ return "ease out quart";          }, toValue: __ease_out_quart,     };
-    __out_quint     = { toString: function(){ return "ease out quint";          }, toValue: __ease_out_quint,     };
-    __out_sine      = { toString: function(){ return "ease out sine";           }, toValue: __ease_out_sine,      };
-    __out_expo      = { toString: function(){ return "ease out expo";           }, toValue: __ease_out_expo,      };
-    __out_bounce    = { toString: function(){ return "ease out bounce";         }, toValue: __ease_out_bounce,    };
-    __out_circ      = { toString: function(){ return "ease out circ";           }, toValue: __ease_out_circ,      };
-    __out_back      = { toString: function(){ return "ease out back";           }, toValue: __ease_out_back,      };
-    __out_elastic   = { toString: function(){ return "ease out elastic";        }, toValue: __ease_out_elastic,   };
-    __inout_quad    = { toString: function(){ return "ease in and out quad";    }, toValue: __ease_inout_quad,    };
-    __inout_cubic   = { toString: function(){ return "ease in and out cubic";   }, toValue: __ease_inout_cubic,   };
-    __inout_quart   = { toString: function(){ return "ease in and out quart";   }, toValue: __ease_inout_quart,   };
-    __inout_quint   = { toString: function(){ return "ease in and out quint";   }, toValue: __ease_inout_quint,   };
-    __inout_sine    = { toString: function(){ return "ease in and out sine";    }, toValue: __ease_inout_sine,    };
-    __inout_expo    = { toString: function(){ return "ease in and out expo";    }, toValue: __ease_inout_expo,    };
-    __inout_bounce  = { toString: function(){ return "ease in and out bounce";  }, toValue: __ease_inout_bounce,  };
-    __inout_circ    = { toString: function(){ return "ease in and out circ";    }, toValue: __ease_inout_circ,    };
-    __inout_back    = { toString: function(){ return "ease in and out back";    }, toValue: __ease_inout_back,    };
-    __inout_elastic = { toString: function(){ return "ease in and out elastic"; }, toValue: __ease_inout_elastic, };
+    
+    //Build easing instances
+    var _names = variable_struct_get_names(self);
+    var _i = 0;
+    repeat(array_length(_names))
+    {
+        var _name = _names[_i];
+        if (string_pos("__ease", _name) > 0) 
+        {
+            var _key = string_replace_all(string_replace(string_copy(_name, 3, string_length(_name) - 2), "inout", "in out"), "_", " ");
+            self[$ string_replace(_name, "ease_", "")] = new __easing(_key, self[$ _name]);
+        }
+        ++_i;
+    }
 
     })();
     return instance;
