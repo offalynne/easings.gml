@@ -39,7 +39,8 @@ function __easings()
     
     //Setup interface
     var _add_easing = function(_name, _value, _struct = self)
-    { 
+    {
+        //Readable to code-valid name
         variable_struct_set(_struct, string_replace_all("__" + _name, " ", "_"),  new __easing("ease " + _name, _value));
     };
 
