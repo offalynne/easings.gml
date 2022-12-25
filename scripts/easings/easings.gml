@@ -21,15 +21,6 @@ function __easings()
     static instance = new (function() constructor {
     
     global.__2pi = 2 * pi;
-
-    //Easing constants    
-    __c1 = 1.70158;
-    __c2 = __c1 * 1.525;
-    __c3 = __c1 + 1;
-    __c4 = global.__2pi / 3;
-    __c5 = global.__2pi / 4.5;
-    __d1 = 2.75;
-    __n1 = 7.5625;
     
     //Episilon-safe square root
     __sqrt = function(_z){ return ((sign(_z) == 1) ? sqrt(_z) : 0); }
@@ -83,6 +74,9 @@ function __easings()
         if (_z >= 0.5) return (2 - power(2, -20 * _z + 10)) / 2;
                         return     power(2,  20 * _z - 10)  / 2   
     });
+        
+    __d1 = 2.75;
+    __n1 = 7.5625;
 
     _add_easing("out bounce", function(_z)
     {
@@ -107,6 +101,10 @@ function __easings()
         if (_z >= 0.5) return (1 + (__easings()).__sqrt(1 - power(-2 * _z + 2, 2))) / 2;
                        return (1 - (__easings()).__sqrt(1 - power( 2 * _z,     2))) / 2;
     });
+        
+    __c1 = 1.70158;
+    __c2 = __c1 * 1.525;
+    __c3 = __c1 + 1;
 
     _add_easing("in back",     function(_z){ return     (__easings()).__c3 * power(_z,     3) - (__easings()).__c1 * power(_z,     2); });
     _add_easing("out back",    function(_z){ return 1 + (__easings()).__c3 * power(_z - 1, 3) + (__easings()).__c1 * power(_z - 1, 2); });
@@ -114,7 +112,9 @@ function __easings()
     {
         if (_z >= 0.5) return (power(2 * _z - 2, 2) * (((__easings()).__c2 + 1) * (_z * 2 - 2) + (__easings()).__c2) + 2) / 2;
                        return (power(2 * _z,     2) * (((__easings()).__c2 + 1) * (_z * 2    ) - (__easings()).__c2)    ) / 2;
-    });
+    });;
+        
+    __c4 = global.__2pi / 3;
 
     _add_easing("in elastic", function(_z)
     {
@@ -130,7 +130,9 @@ function __easings()
         if (_z == 1.0) return 1;
 
         return power(2, -10 * _z) * sin((_z * 10 - 0.75) * __c4) + 1;
-    });
+    });        
+
+    __c5 = global.__2pi / 4.5;
 
     _add_easing("in out elastic", function(_z)
     {
