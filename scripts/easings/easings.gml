@@ -137,8 +137,8 @@ function __easings() { static instance = new (function() constructor
     {
         if (_z == 0.0) return 0;
         if (_z == 1.0) return 1;
-        if (_z >= 0.5) return    power(2, -20 * _z + 10) * sin((20 * _z - 11.125) * __c5)  / 2 + 1;
-                        return -(power(2,  20 * _z - 10) * sin((20 * _z - 11.125) * __c5)) / 2;
+        if (_z >= 0.5) return   power(2, -20 * _z + 10) * sin((20 * _z - 11.125) * __c5)  / 2 + 1;
+                       return -(power(2,  20 * _z - 10) * sin((20 * _z - 11.125) * __c5)) / 2;
     });
        
     _add_easing("smootheststep", function(_z){ return -20 * power(_z, 7) + 70 * power(_z, 6) - 84 * power(_z, 5) + 35 * power(_z, 4); });
