@@ -12,7 +12,6 @@ function ease(_amount, _easing = EASE_LINEAR)
 
 function tween(_from, _to, _amount, _easing = EASE_LINEAR)
 {
-    gml_pragma("forceinline");
     return _from + (_to - _from) * ease(_amount, _easing);
 }
 
