@@ -16,10 +16,9 @@ function tween(_from, _to, _amount, _easing = EASE_LINEAR)
     return _from + (_to - _from) * ease(_amount, _easing);
 }
 
-function __easings()
+function __easings() { static instance = new (function() constructor 
 {
-    static instance = new (function() constructor {
-    
+    //Tau my beloved
     global.__2pi = 2 * pi;
     
     //Episilon-safe square root
@@ -44,7 +43,7 @@ function __easings()
         variable_struct_set(_struct, string_replace_all("__" + _name, " ", "_"),  new __easing("ease " + _name, _value));
     };
 
-   //Easings functions    
+    //Easings functions    
     _add_easing("linear", function(_z){ return _z; });
 
     _add_easing("in quad",  function(_z){ return power(_z, 2); });
@@ -147,10 +146,7 @@ function __easings()
     _add_easing("smootherstep",  function(_z){ return _z * _z * _z * (_z * (_z * 6 - 15) + 10); });
     _add_easing("smoothstep",    function(_z){ return _z * _z * (3 - 2 * _z); });
 
-
-    })();
-    return instance;
-};
+})(); return instance; };
 
 #macro EASE_LINEAR        (__easings()).__linear
 #macro EASE_IN_QUAD       (__easings()).__in_quad
