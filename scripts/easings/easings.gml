@@ -20,8 +20,8 @@ function __easings() { static instance = new (function() constructor
     //Tau my beloved
     global.__2pi = 2 * pi;
     
-    //Episilon-safe square root
-    __sqrt = function(_z){ return ((sign(_z) == 1) ? sqrt(_z) : 0); }
+    //Epsilon-safe square root
+    __sqrt = function(_z){ return ((sign(_z) == 1) ? sqrt(_z) : 0); };
     
     //Easing class
     __easing = function(_name, _value) constructor
@@ -29,11 +29,8 @@ function __easings() { static instance = new (function() constructor
         __name  = _name; 
         toValue = _value;
         
-        static toString = function()
-        {
-            return __name;
-        }
-    }
+        static toString = function(){ return __name; };
+    };
     
     //Setup interface
     var _add_easing = function(_name, _value, _struct = self)
@@ -111,7 +108,7 @@ function __easings() { static instance = new (function() constructor
     {
         if (_z >= 0.5) return (power(2 * _z - 2, 2) * (((__easings()).__c2 + 1) * (_z * 2 - 2) + (__easings()).__c2) + 2) / 2;
                        return (power(2 * _z,     2) * (((__easings()).__c2 + 1) * (_z * 2    ) - (__easings()).__c2)    ) / 2;
-    });;
+    });
         
     __c4 = global.__2pi / 3;
 
