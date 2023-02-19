@@ -2,11 +2,11 @@ easings.gml
 
 Computational easings for GMS2
 
-ease(position, easing)
+ease(position, [easing])
   function: Ease within unit interval
   returned: Real
 
-tween(start, end, position, easing)
+tween(start, end, position, [easing])
   function: Ease positional value
   returned: Real
 
