@@ -15,6 +15,7 @@ function tween(_from, _to, _amount, _easing = EASE_LINEAR)
     return _from + (_to - _from) * ease(_amount, _easing);
 }
 
+//Library singleton
 function __easings() { static instance = new (function() constructor 
 {
     //Tau my beloved
@@ -27,15 +28,14 @@ function __easings() { static instance = new (function() constructor
     __easing = function(_name, _value) constructor
     {
         __name  = _name; 
-        toValue = _value;
-        
+        toValue = _value;        
         static toString = function(){ return __name; };
     };
     
-    //Setup interface
+    //Easing factory
     var _add_easing = function(_name, _value, _struct = self)
     {
-        //Readable to code-valid name
+        //Index function with code-valid name based on readable name
         variable_struct_set(_struct, string_replace_all("__" + _name, " ", "_"),  new __easing("ease " + _name, _value));
     };
 
