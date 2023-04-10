@@ -29,10 +29,8 @@ function __easings() { static instance = new (function() constructor
     {
         __name  = _name;
         
-        /// feather ignore once all
+        /// feather ignore all
         toValue = _value;
-        
-        /// feather ignore once all
         static toString = function(){ return __name; };
     };
     
