@@ -19,7 +19,7 @@ function tween(_from, _to, _amount, _easing = EASE_LINEAR)
 function __easings() { static instance = new (function() constructor 
 {
     //Tau my beloved
-    global.__2pi = 2 * pi;
+    __2pi = 2 * pi;
     
     //Epsilon-safe square root
     __sqrt = function(_z){ return ((sign(_z) == 1) ? sqrt(_z) : 0); };
@@ -114,7 +114,7 @@ function __easings() { static instance = new (function() constructor
                        return (power(2 * _z,     2) * (((__easings()).__c2 + 1) * (_z * 2    ) - (__easings()).__c2)    ) / 2;
     });
         
-    __c4 = global.__2pi / 3;
+    __c4 = __2pi / 3;
 
     _add_easing("in elastic", function(_z)
     {
@@ -132,7 +132,7 @@ function __easings() { static instance = new (function() constructor
         return power(2, -10 * _z) * sin((_z * 10 - 0.75) * __c4) + 1;
     });        
 
-    __c5 = global.__2pi / 4.5;
+    __c5 = __2pi / 4.5;
 
     _add_easing("in out elastic", function(_z)
     {
