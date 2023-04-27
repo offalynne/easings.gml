@@ -27,6 +27,7 @@ function __easings() { static instance = new (function() constructor
     //Easing class
     __easing = function(_name, _value) constructor
     {
+        //Name field for *ease* of debugging
         __name  = _name;
         
         //Easings feather ignore once all
