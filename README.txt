@@ -3,7 +3,7 @@ easings.gml
 Computational easings for GMS2
 
 ease(position, [easing])
-  function: Ease within unit interval
+  function: Ease in unit interval
   returned: Real
 
 tween(start, end, position, [easing])
