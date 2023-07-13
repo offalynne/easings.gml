@@ -16,7 +16,7 @@ function tween(_from, _to, _amount, _easing = EASE_LINEAR)
 }
 
 //Library singleton
-function __easings() { static instance = new (function() constructor 
+function __easings() { static __instance = new (function() constructor 
 {
     //Tau my beloved
     __2pi = 2 * pi;
@@ -147,7 +147,7 @@ function __easings() { static instance = new (function() constructor
     _add_easing("smootherstep",  function(_z){ return _z * _z * _z * (_z * (_z * 6 - 15) + 10); });
     _add_easing("smoothstep",    function(_z){ return _z * _z * (3 - 2 * _z); });
 
-})(); return instance; };
+})(); return __instance; };
 
 #macro EASE_LINEAR        (__easings()).__linear
 #macro EASE_IN_QUAD       (__easings()).__in_quad
