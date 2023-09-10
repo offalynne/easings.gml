@@ -81,10 +81,10 @@ function __easings() { static __instance = new (function() constructor
 
     _add_easing("out bounce", function(_z)
     {
-             if (_z < 1.0/(__easings()).__d1){                                     return (__easings()).__n1*_z*_z;          }
-        else if (_z < 2.0/(__easings()).__d1){ _z -= (1.5    /(__easings()).__d1); return (__easings()).__n1*_z*_z + 0.75;   }
-        else if (_z < 2.5/(__easings()).__d1){ _z -= (2.25   /(__easings()).__d1); return (__easings()).__n1*_z*_z + 0.9375; }
-        /* then..                           */ _z -= (2.625/ (__easings()).__d1); return (__easings()).__n1*_z*_z + 0.984375;
+             if (_z < 1.0/(__easings()).__d1){                                   return (__easings()).__n1*_z*_z;          }
+        else if (_z < 2.0/(__easings()).__d1){ _z -= (1.5  /(__easings()).__d1); return (__easings()).__n1*_z*_z + 0.75;   }
+        else if (_z < 2.5/(__easings()).__d1){ _z -= (2.25 /(__easings()).__d1); return (__easings()).__n1*_z*_z + 0.9375; }
+        /* then..                           */ _z -= (2.625/(__easings()).__d1); return (__easings()).__n1*_z*_z + 0.984375;
     });
 
     _add_easing("in out bounce", function(_z)
