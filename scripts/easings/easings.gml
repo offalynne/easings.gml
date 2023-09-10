@@ -28,12 +28,8 @@ function __easings() { static __instance = new (function() constructor
     __easing = function(_name, _value) constructor
     {
         //Name field for *ease* of debugging
-        __name  = _name;
-        
-        //Easings feather ignore once all
+        __name    = _name;        
         __toValue = _value;
-        
-        //Easings feather ignore once all
         static toString = function(){ return __name; };
     };
     
