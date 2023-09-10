@@ -7,7 +7,7 @@
 
 function ease(_amount, _easing = EASE_LINEAR)
 {
-    return _easing.toValue(clamp(_amount, 0, 1));
+    return _easing.__toValue(clamp(_amount, 0, 1));
 }
 
 function tween(_from, _to, _amount, _easing = EASE_LINEAR)
@@ -31,7 +31,7 @@ function __easings() { static __instance = new (function() constructor
         __name  = _name;
         
         //Easings feather ignore once all
-        toValue = _value;
+        __toValue = _value;
         
         //Easings feather ignore once all
         static toString = function(){ return __name; };
@@ -89,11 +89,11 @@ function __easings() { static __instance = new (function() constructor
 
     _add_easing("in out bounce", function(_z)
     {
-        if (_z < 0.5) return (1 - (__easings()).__out_bounce.toValue(1 -  2 * _z)) / 2
-                      return (1 + (__easings()).__out_bounce.toValue(2 * _z -  1)) / 2;
+        if (_z < 0.5) return (1 - (__easings()).__out_bounce.__toValue(1 -  2 * _z)) / 2
+                      return (1 + (__easings()).__out_bounce.__toValue(2 * _z -  1)) / 2;
     });
     
-    _add_easing("in bounce", function(_z){ return 1 - (__easings()).__out_bounce.toValue(1 - _z); });
+    _add_easing("in bounce", function(_z){ return 1 - (__easings()).__out_bounce.__toValue(1 - _z); });
 
     _add_easing("in circ",     function(_z){ return 1 - (__easings()).__sqrt(1 - power( _z,      2)); });
     _add_easing("out circ",    function(_z){ return     (__easings()).__sqrt(1 - power((_z - 1), 2)); });
