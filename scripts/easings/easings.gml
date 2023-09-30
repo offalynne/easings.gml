@@ -22,7 +22,7 @@ function __easings() { static __instance = new (function() constructor
     __2pi = 2*pi;
     
     //Epsilon-safe square root
-    __sqrt = function(_z){ return ((sign(_z) == 1) ? sqrt(_z) : 0); };
+    __sqrt = function(_z){ return (sign(_z) == 1)? sqrt(_z) : 0; };
     
     //Easing class
     __easing = function(_name, _value) constructor
