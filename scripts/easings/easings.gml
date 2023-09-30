@@ -60,7 +60,6 @@ function __easings() { static __instance = new (function() constructor {
         
     __d1 = 2.75;
     __n1 = 7.5625;
-
     __out_bounce = function(_z){
              if (_z < 1.0/(__easings()).__d1){                                   return (__easings()).__n1*_z*_z;          }
         else if (_z < 2.0/(__easings()).__d1){ _z -= (1.5  /(__easings()).__d1); return (__easings()).__n1*_z*_z + 0.75;   }
