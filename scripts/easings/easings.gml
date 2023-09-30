@@ -14,7 +14,7 @@ function tween(_from, _to, _amount, _easing = EASE_LINEAR){
 }
 
 //Library singleton
-function __easings() { static __instance = new (function() constructor {
+function __easings(){ static __instance = new (function() constructor {
 
     //Tau my beloved
     __2pi = 2*pi;
@@ -61,26 +61,26 @@ function __easings() { static __instance = new (function() constructor {
     __d1 = 2.75;
     __n1 = 7.5625;
     __out_bounce = function(_z){
-             if (_z < 1.0/(__easings()).__d1){                                   return (__easings()).__n1*_z*_z;          }
-        else if (_z < 2.0/(__easings()).__d1){ _z -= (1.5  /(__easings()).__d1); return (__easings()).__n1*_z*_z + 0.75;   }
-        else if (_z < 2.5/(__easings()).__d1){ _z -= (2.25 /(__easings()).__d1); return (__easings()).__n1*_z*_z + 0.9375; }
-                                               _z -= (2.625/(__easings()).__d1); return (__easings()).__n1*_z*_z + 0.984375;
+             if (_z < 1.0/__easings().__d1){                                 return __easings().__n1*_z*_z;          }
+        else if (_z < 2.0/__easings().__d1){ _z -= (1.5  /__easings().__d1); return __easings().__n1*_z*_z + 0.75;   }
+        else if (_z < 2.5/__easings().__d1){ _z -= (2.25 /__easings().__d1); return __easings().__n1*_z*_z + 0.9375; }
+                                             _z -= (2.625/__easings().__d1); return __easings().__n1*_z*_z + 0.984375;
     };
 
     _add_easing(EASE_OUT_BOUNCE, __out_bounce);
 
     _add_easing(EASE_INOUT_BOUNCE, function(_z){
-        if (_z < 0.5) return (1 - (__easings()).__out_bounce(1 -  2*_z))/2
-                      return (1 + (__easings()).__out_bounce(2*_z -  1))/2;
+        if (_z < 0.5) return (1 - __easings().__out_bounce(1 -  2*_z))/2
+                      return (1 + __easings().__out_bounce(2*_z -  1))/2;
     });
     
-    _add_easing(EASE_IN_BOUNCE, function(_z){ return 1 - (__easings()).__out_bounce(1 - _z); });
+    _add_easing(EASE_IN_BOUNCE, function(_z){ return 1 - __easings().__out_bounce(1 - _z); });
 
-    _add_easing(EASE_IN_CIRC,    function(_z){ return 1 - (__easings()).__sqrt(1 - power( _z,      2)); });
-    _add_easing(EASE_OUT_CIRC,   function(_z){ return     (__easings()).__sqrt(1 - power((_z - 1), 2)); });
+    _add_easing(EASE_IN_CIRC,    function(_z){ return 1 - __easings().__sqrt(1 - power( _z,      2)); });
+    _add_easing(EASE_OUT_CIRC,   function(_z){ return     __easings().__sqrt(1 - power((_z - 1), 2)); });
     _add_easing(EASE_INOUT_CIRC, function(_z){
-        if (_z >= 0.5) return (1 + (__easings()).__sqrt(1 - power(-2*_z + 2, 2)))/2;
-                       return (1 - (__easings()).__sqrt(1 - power( 2*_z,     2)))/2;
+        if (_z >= 0.5) return (1 + __easings().__sqrt(1 - power(-2*_z + 2, 2)))/2;
+                       return (1 - __easings().__sqrt(1 - power( 2*_z,     2)))/2;
     });
         
     __c1 = 1.70158;
@@ -89,11 +89,11 @@ function __easings() { static __instance = new (function() constructor {
     __c4 = __2pi/3;
     __c5 = __2pi/4.5;
 
-    _add_easing(EASE_IN_BACK,    function(_z){ return     (__easings()).__c3*power(_z,     3) - (__easings()).__c1*power(_z,     2); });
-    _add_easing(EASE_OUT_BACK,   function(_z){ return 1 + (__easings()).__c3*power(_z - 1, 3) + (__easings()).__c1*power(_z - 1, 2); });
+    _add_easing(EASE_IN_BACK,    function(_z){ return     __easings().__c3*power(_z,     3) - __easings().__c1*power(_z,     2); });
+    _add_easing(EASE_OUT_BACK,   function(_z){ return 1 + __easings().__c3*power(_z - 1, 3) + __easings().__c1*power(_z - 1, 2); });
     _add_easing(EASE_INOUT_BACK, function(_z){
-        if (_z >= 0.5) return (power(2*_z - 2, 2) * (((__easings()).__c2 + 1) * (_z*2 - 2) + (__easings()).__c2) + 2)/2;
-                       return (power(2*_z,     2) * (((__easings()).__c2 + 1) * (_z*2    ) - (__easings()).__c2)    )/2;
+        if (_z >= 0.5) return (power(2*_z - 2, 2) * ((__easings().__c2 + 1) * (_z*2 - 2) + __easings().__c2) + 2)/2;
+                       return (power(2*_z,     2) * ((__easings().__c2 + 1) * (_z*2    ) - __easings().__c2)    )/2;
     });
 
     _add_easing(EASE_IN_ELASTIC, function(_z){
