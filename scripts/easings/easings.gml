@@ -2,7 +2,7 @@
 // github.com/offalynne/easings.gml
 //
 // refs
-//   solhsa.com/interpolation/
+//   solhsa.com/interpolation
 //   github.com/ai/easings.net
 
 function ease(_amount, _easing = EASE_LINEAR){
@@ -15,9 +15,10 @@ function tween(_from, _to, _amount, _easing = EASE_LINEAR){
 
 //Library singleton
 function __easings() { static __instance = new (function() constructor {
+
     //Tau my beloved
     __2pi = 2*pi;
-    
+
     //Epsilon-safe square root
     __sqrt = function(_z){ return (sign(_z) == 1)? sqrt(_z) : 0; };
     
