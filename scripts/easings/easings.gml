@@ -23,7 +23,9 @@ function __easings() { static __instance = new (function() constructor {
     __sqrt = function(_z){ return (sign(_z) == 1)? sqrt(_z) : 0; };
     
     //Easing factory
-    var _add_easing = function(_name, _function, _struct = self){ variable_struct_set(_struct, _name, _function); };
+    var _add_easing = function(_name, _function, _struct = self){
+        variable_struct_set(_struct, _name, _function);
+    };
 
     //Easings functions    
     _add_easing(EASE_LINEAR, function(_z){ return _z; });
