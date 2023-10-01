@@ -47,8 +47,8 @@ function __easings(){ static __instance = new (function() constructor {
     _set(EASE_IN_EXPO,    function(_z){ return _z == 0 ? 0 :     power(2,  10 * _z - 10) });
     _set(EASE_OUT_EXPO,   function(_z){ return _z == 1 ? 1 : 1 - power(2, -10 * _z     ) });
     _set(EASE_INOUT_EXPO, function(_z){
-        if (_z == 0.0) { return  0 }
-        if (_z == 1.0) { return  1 }
+        if (_z == 0.0) { return 0 }
+        if (_z == 1.0) { return 1 }
         if (_z >= 0.5) { return (2 - power(2, -20*_z + 10))/2 }
                           return     power(2,  20*_z - 10) /2 });
         
