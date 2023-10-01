@@ -80,12 +80,11 @@ function __easings(){ static __instance = new (function() constructor {
                        return (1 - __easings().__sqrt(1 - power( 2*_z,     2)))/2;
     });
 
-    var __2pi = 2*pi;
     __c1 = 1.70158;
     __c2 = __c1 * 1.525;
     __c3 = __c1 + 1;
-    __c4 = __2pi/3;
-    __c5 = __2pi/4.5;
+    __c4 = 2*pi / 3;
+    __c5 = 2*pi / 4.5;
 
     _set(EASE_IN_BACK,    function(_z){ return     __easings().__c3*power(_z,     3) - __easings().__c1*power(_z,     2); });
     _set(EASE_OUT_BACK,   function(_z){ return 1 + __easings().__c3*power(_z - 1, 3) + __easings().__c1*power(_z - 1, 2); });
