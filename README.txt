@@ -10,7 +10,7 @@ tween(start, end, position, [easing])
   function: Ease positional value
   returned: Real
 
-Easings (EASE_…)
+Easings: EASE_…
  LINEAR (none)
  SMOOTHSTEP
  SMOOTHERSTEP
