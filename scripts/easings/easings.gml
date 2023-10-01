@@ -16,9 +16,6 @@ function tween(_from, _to, _amount, _easing = EASE_LINEAR){
 //Library singleton
 function __easings(){ static __instance = new (function() constructor {
 
-    //Tau my beloved
-    __2pi = 2*pi;
-
     //Epsilon-safe square root
     __sqrt = function(_z){ return (sign(_z) == 1)? sqrt(_z) : 0; };
     
@@ -82,7 +79,8 @@ function __easings(){ static __instance = new (function() constructor {
         if (_z >= 0.5) return (1 + __easings().__sqrt(1 - power(-2*_z + 2, 2)))/2;
                        return (1 - __easings().__sqrt(1 - power( 2*_z,     2)))/2;
     });
-        
+
+    var __2pi = 2*pi;
     __c1 = 1.70158;
     __c2 = __c1 * 1.525;
     __c3 = __c1 + 1;
