@@ -23,7 +23,7 @@ Reference
   solhsa.com/interpolation/
   easings.net
  
-Alternative with Animation Curves
+Alternative (Animation Curves)
   github.com/DragoniteSpam/Easings
 
 @offalynne, 2021
