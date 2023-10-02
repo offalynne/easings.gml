@@ -19,7 +19,7 @@ function __easings(){ static __instance = new (function() constructor {
     //Epsilon-safe square root
     __sqrt = function(_z){ return (sign(_z) == 1)? sqrt(_z) : 0 };
     
-    //Easing factory
+    //Factory
     var _set = function(_name, _function, _struct = self){ variable_struct_set(_struct, _name, _function) };
 
     //Easings functions    
