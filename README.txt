@@ -27,4 +27,4 @@ Alternative (Animation Curves)
   github.com/DragoniteSpam/Easings
 
 @offalynne, 2021
-MIT licensed, use as you please
+use as you please
