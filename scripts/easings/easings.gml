@@ -16,7 +16,7 @@ function __easings(){ static __instance = new (function() constructor {
 
     var _set = function(_name, _function, _struct = self){ 
         variable_struct_set(_struct, _name, _function);
-        return variable_struct_get(_struct, _name) }
+        return variable_struct_get(_struct, _name) };
 
     //Epsilon-safe square root
     __sqrt = function(_z){ return (sign(_z) == 1)? sqrt(_z) : 0 };
