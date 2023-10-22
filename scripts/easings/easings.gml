@@ -16,49 +16,51 @@ function tween(_from, _to, _amount, _easing = EASE_LINEAR){
 //Library singleton
 function __easings(){ static __instance = new (function() constructor {
 
+    var _set = function(_name, _function, _struct = self){ 
+        variable_struct_set(_struct, _name, _function);
+        return variable_struct_get(_struct, _name);
+    };
+
     //Epsilon-safe square root
     __sqrt = function(_z){ return (sign(_z) == 1)? sqrt(_z) : 0 };
     
-    var _set = function(_name, _function, _struct = self){ variable_struct_set(_struct, _name, _function) };
-
     //Easings functions    
-    _set(EASE_LINEAR, function(_z){ return _z });
+    _set(EASE_LINEAR,      function(_z){ return _z });
 
-    _set(EASE_IN_QUAD,  function(_z){ return power(_z, 2) });
-    _set(EASE_IN_CUBIC, function(_z){ return power(_z, 3) });
-    _set(EASE_IN_QUART, function(_z){ return power(_z, 4) });
-    _set(EASE_IN_QUINT, function(_z){ return power(_z, 5) });
+    _set(EASE_IN_QUAD,     function(_z){ return power(_z, 2) });
+    _set(EASE_IN_CUBIC,    function(_z){ return power(_z, 3) });
+    _set(EASE_IN_QUART,    function(_z){ return power(_z, 4) });
+    _set(EASE_IN_QUINT,    function(_z){ return power(_z, 5) });
 
-    _set(EASE_OUT_QUAD,  function(_z){ return 1 - power(1 - _z, 2) });
-    _set(EASE_OUT_CUBIC, function(_z){ return 1 - power(1 - _z, 3) });
-    _set(EASE_OUT_QUART, function(_z){ return 1 - power(1 - _z, 4) });
-    _set(EASE_OUT_QUINT, function(_z){ return 1 - power(1 - _z, 5) });
+    _set(EASE_OUT_QUAD,    function(_z){ return 1 - power(1 - _z, 2) });
+    _set(EASE_OUT_CUBIC,   function(_z){ return 1 - power(1 - _z, 3) });
+    _set(EASE_OUT_QUART,   function(_z){ return 1 - power(1 - _z, 4) });
+    _set(EASE_OUT_QUINT,   function(_z){ return 1 - power(1 - _z, 5) });
 
     _set(EASE_INOUT_QUAD,  function(_z){ return _z < 0.5 ? power(_z, 2)* 2 : 1 - power(-2*_z + 2, 2)/2 });
     _set(EASE_INOUT_CUBIC, function(_z){ return _z < 0.5 ? power(_z, 3)* 4 : 1 - power(-2*_z + 2, 3)/2 });
     _set(EASE_INOUT_QUART, function(_z){ return _z < 0.5 ? power(_z, 4)* 8 : 1 - power(-2*_z + 2, 4)/2 });
     _set(EASE_INOUT_QUINT, function(_z){ return _z < 0.5 ? power(_z, 5)*16 : 1 - power(-2*_z + 2, 5)/2 });
 
-    _set(EASE_IN_SINE,    function(_z){ return 1 - cos((_z*pi)     /2) });
-    _set(EASE_OUT_SINE,   function(_z){ return     sin((_z*pi)     /2) });
-    _set(EASE_INOUT_SINE, function(_z){ return   -(cos( _z*pi) - 1)/2  });
+    _set(EASE_IN_SINE,     function(_z){ return 1 - cos((_z*pi)     /2) });
+    _set(EASE_OUT_SINE,    function(_z){ return     sin((_z*pi)     /2) });
+    _set(EASE_INOUT_SINE,  function(_z){ return   -(cos( _z*pi) - 1)/2  });
 
-    _set(EASE_IN_EXPO,    function(_z){ return (_z == 0) ? 0 :     power(2,  10*_z - 10) });
-    _set(EASE_OUT_EXPO,   function(_z){ return (_z == 1) ? 1 : 1 - power(2, -10*_z     ) });
-    _set(EASE_INOUT_EXPO, function(_z){
+    _set(EASE_IN_EXPO,     function(_z){ return (_z == 0) ? 0 :     power(2,  10*_z - 10) });
+    _set(EASE_OUT_EXPO,    function(_z){ return (_z == 1) ? 1 : 1 - power(2, -10*_z     ) });
+    _set(EASE_INOUT_EXPO,  function(_z){
         if (_z == 0.0) { return 0 }
         if (_z == 1.0) { return 1 }
         if (_z >= 0.5) { return (2 - power(2, -20*_z + 10))/2 }
                          return      power(2,  20*_z - 10) /2 });
-        
-    __out_bounce = function(_z){
+
+    __out_bounce = _set(EASE_OUT_BOUNCE, function(_z){
              if (_z < 1.0/2.75){                     return 7.5625*_z*_z            }
         else if (_z < 2.0/2.75){ _z -= (1.5  /2.75); return 7.5625*_z*_z + 0.75     }
         else if (_z < 2.5/2.75){ _z -= (2.25 /2.75); return 7.5625*_z*_z + 0.9375   }
-                                 _z -= (2.625/2.75); return 7.5625*_z*_z + 0.984375 };
-
-    _set(EASE_OUT_BOUNCE, __out_bounce);
-
+                                 _z -= (2.625/2.75); return 7.5625*_z*_z + 0.984375 }
+    );
+    
     _set(EASE_INOUT_BOUNCE, function(_z){
         if (_z < 0.5) return (1 - __out_bounce(1 -  2*_z))/2
                       return (1 + __out_bounce(2*_z -  1))/2 });
