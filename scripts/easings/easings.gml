@@ -60,16 +60,16 @@ function __easings(){ static __instance = new (function() constructor {
     _set(EASE_OUT_BOUNCE, __out_bounce);
 
     _set(EASE_INOUT_BOUNCE, function(_z){
-        if (_z < 0.5) return (1 - __easings().__out_bounce(1 -  2*_z))/2
-                      return (1 + __easings().__out_bounce(2*_z -  1))/2 });
+        if (_z < 0.5) return (1 - __out_bounce(1 -  2*_z))/2
+                      return (1 + __out_bounce(2*_z -  1))/2 });
     
-    _set(EASE_IN_BOUNCE, function(_z){ return 1 - __easings().__out_bounce(1 - _z) });
+    _set(EASE_IN_BOUNCE, function(_z){ return 1 - __out_bounce(1 - _z) });
 
-    _set(EASE_IN_CIRC,    function(_z){ return 1 - __easings().__sqrt(1 - power( _z,      2)) });
-    _set(EASE_OUT_CIRC,   function(_z){ return     __easings().__sqrt(1 - power((_z - 1), 2)) });
+    _set(EASE_IN_CIRC,    function(_z){ return 1 - __sqrt(1 - power( _z,      2)) });
+    _set(EASE_OUT_CIRC,   function(_z){ return     __sqrt(1 - power((_z - 1), 2)) });
     _set(EASE_INOUT_CIRC, function(_z){
-        if (_z >= 0.5){ return (1 + __easings().__sqrt(1 - power(-2*_z + 2, 2)))/2 }
-                        return (1 - __easings().__sqrt(1 - power( 2*_z,     2)))/2 });
+        if (_z >= 0.5){ return (1 + __sqrt(1 - power(-2*_z + 2, 2)))/2 }
+                        return (1 - __sqrt(1 - power( 2*_z,     2)))/2 });
 
     _set(EASE_IN_BACK,    function(_z){ return     2.70158*power(_z,     3) - 1.70158*power(_z,     2) });
     _set(EASE_OUT_BACK,   function(_z){ return 1 + 2.70158*power(_z - 1, 3) + 1.70158*power(_z - 1, 2) });
