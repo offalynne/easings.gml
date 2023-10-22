@@ -6,20 +6,17 @@
 //   github.com/ai/easings.net
 
 function ease(_amount, _easing = EASE_LINEAR){
-    return __easings()[$ _easing](clamp(_amount, 0, 1));
-}
+    return __easings()[$ _easing](clamp(_amount, 0, 1)) }
 
 function tween(_from, _to, _amount, _easing = EASE_LINEAR){
-    return _from + (_to - _from)*ease(_amount, _easing);
-}
+    return _from + (_to - _from)*ease(_amount, _easing) }
 
 //Library singleton
 function __easings(){ static __instance = new (function() constructor {
 
     var _set = function(_name, _function, _struct = self){ 
         variable_struct_set(_struct, _name, _function);
-        return variable_struct_get(_struct, _name);
-    };
+        return variable_struct_get(_struct, _name) }
 
     //Epsilon-safe square root
     __sqrt = function(_z){ return (sign(_z) == 1)? sqrt(_z) : 0 };
@@ -58,8 +55,7 @@ function __easings(){ static __instance = new (function() constructor {
              if (_z < 1.0/2.75){                     return 7.5625*_z*_z            }
         else if (_z < 2.0/2.75){ _z -= (1.5  /2.75); return 7.5625*_z*_z + 0.75     }
         else if (_z < 2.5/2.75){ _z -= (2.25 /2.75); return 7.5625*_z*_z + 0.9375   }
-                                 _z -= (2.625/2.75); return 7.5625*_z*_z + 0.984375 }
-    );
+                                 _z -= (2.625/2.75); return 7.5625*_z*_z + 0.984375 });
     
     _set(EASE_INOUT_BOUNCE, function(_z){
         if (_z < 0.5) return (1 - __out_bounce(1 -  2*_z))/2
@@ -102,7 +98,7 @@ function __easings(){ static __instance = new (function() constructor {
     _set(EASE_SMOOTHERSTEP,  function(_z){ return _z*_z*_z*(_z*(_z*6 - 15) + 10) });
     _set(EASE_SMOOTHSTEP,    function(_z){ return _z*_z*(3 - 2*_z) });
 
-})(); return __instance };
+})(); return __instance }
 
 #macro EASE_LINEAR         "linear"
 #macro EASE_IN_QUAD        "in quad"
