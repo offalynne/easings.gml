@@ -14,12 +14,14 @@ function tween(_from, _to, _amount, _easing = EASE_LINEAR){
 //Library singleton
 function __easings(){ static __instance = new (function() constructor {
 
+    //Set library key
     var _set = function(_name, _function, _struct = self){ 
         variable_struct_set(_struct, _name, _function);
         return variable_struct_get(_struct, _name) };
 
     //Epsilon-safe square root
-    __sqrt = function(_z){ return (sign(_z) == 1)? sqrt(_z) : 0 };
+    __sqrt = function(_z){ 
+        return (sign(_z) == 1)? sqrt(_z) : 0 };
     
     //Easings functions    
     _set(EASE_LINEAR,      function(_z){ return _z });
