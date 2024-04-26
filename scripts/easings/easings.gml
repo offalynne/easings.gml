@@ -48,20 +48,20 @@ function __easings(){ static __instance = new (function() constructor {
     _set(EASE_IN_EXPO,     function(_z){ return (_z == 0) ? 0 :     power(2,  10*_z - 10) });
     _set(EASE_OUT_EXPO,    function(_z){ return (_z == 1) ? 1 : 1 - power(2, -10*_z     ) });
     _set(EASE_INOUT_EXPO,  function(_z){
-        if (_z == 0.0) { return 0 }
-        if (_z == 1.0) { return 1 }
+        if (_z == 0.0) { return  0 }
+        if (_z == 1.0) { return  1 }
         if (_z >= 0.5) { return (2 - power(2, -20*_z + 10))/2 }
                          return      power(2,  20*_z - 10) /2 });
 
-    __out_bounce = _set(EASE_OUT_BOUNCE, function(_z){
+    __bounce = _set(EASE_OUT_BOUNCE, function(_z){
              if (_z < 1.0/2.75){                     return 7.5625*_z*_z            }
         else if (_z < 2.0/2.75){ _z -= (1.5  /2.75); return 7.5625*_z*_z + 0.75     }
         else if (_z < 2.5/2.75){ _z -= (2.25 /2.75); return 7.5625*_z*_z + 0.9375   }
                                  _z -= (2.625/2.75); return 7.5625*_z*_z + 0.984375 });
     
     _set(EASE_INOUT_BOUNCE, function(_z){
-        if (_z < 0.5) return (1 - __out_bounce(1 -  2*_z))/2
-                      return (1 + __out_bounce(2*_z -  1))/2 });
+        if (_z < 0.5) return (1 - __bounce(1 -  2*_z))/2
+                      return (1 + __bounce(2*_z -  1))/2 });
     
     _set(EASE_IN_BOUNCE, function(_z){ return 1 - __out_bounce(1 - _z) });
 
