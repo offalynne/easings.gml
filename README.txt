@@ -3,7 +3,7 @@ easings.gml
 Computational easings for GMS2
 
 ease(position, [easing])
-  function: Ease in unit interval
+  function: Ease within unit interval
   returned: Real
 
 interpolate(start, end, position, [easing])
