@@ -58,7 +58,7 @@ function sc_test()
         (
             _pad, 
             _i * _bar,
-            _pad + (room_width - _pad*2) * tween(0, 1, __x, _eases[_i]),
+            _pad + (room_width - _pad*2) * interpolate(0, 1, __x, _eases[_i]),
             (_i + 1) * _bar, 
             false
         );

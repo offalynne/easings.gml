@@ -8,7 +8,7 @@
 function ease(_amount, _easing = EASE_LINEAR){
     return __easings()[$ _easing](clamp(_amount, 0, 1)) }
 
-function tween(_from, _to, _amount, _easing = EASE_LINEAR){
+function interpolate(_from, _to, _amount, _easing = EASE_LINEAR){
     return _from + (_to - _from)*ease(_amount, _easing) }
 
 //Library singleton
