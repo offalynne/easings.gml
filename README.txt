@@ -6,7 +6,7 @@ ease(position, [easing])
   function: Ease in unit interval
   returned: Real
 
-tween(start, end, position, [easing])
+interpolate(start, end, position, [easing])
   function: Ease positional value
   returned: Real
 
