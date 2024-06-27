@@ -11,7 +11,7 @@ interpolate(start, end, position, [easing])
   returned: Real
 
 Easings: EASE_…
- LINEAR (none)
+ LINEAR
  SMOOTHSTEP
  SMOOTHERSTEP
  SMOOTHESTSTEP

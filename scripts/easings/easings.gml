@@ -5,14 +5,14 @@
 //   solhsa.com/interpolation/
 //   github.com/ai/easings.net
 
-function ease(_amount, _easing = EASE_LINEAR){
+function ease(_amount, _easing = __EASE_NONE){
     return __easings()[$ _easing](clamp(_amount, 0, 1)) }
 
-function interpolate(_from, _to, _amount, _easing = EASE_LINEAR){
+function interpolate(_from, _to, _amount, _easing = __EASE_NONE){
     return _from + (_to - _from)*ease(_amount, _easing) }
 
 //Library singleton
-function __easings(){ static __instance = new (function() constructor {
+function __easings(){ static __instance = new (function() constructor{
 
     //Set library key
     var _set = function(_name, _function, _struct = self){ 
@@ -20,10 +20,10 @@ function __easings(){ static __instance = new (function() constructor {
         return variable_struct_get(_struct, _name) };
 
     //Epsilon-safe square root
-    __sqrt = function(_z){ 
-        return (sign(_z) == 1)? sqrt(_z) : 0 };
+    __sqrt = function(_z){ return (sign(_z) == 1)? sqrt(_z) : 0 };
     
     //Easings functions    
+    _set(__EASE_NONE,      function(_z){ return _z >= 0.5 });
     _set(EASE_LINEAR,      function(_z){ return _z });
 
     _set(EASE_IN_QUAD,     function(_z){ return power(_z, 2) });
@@ -48,10 +48,10 @@ function __easings(){ static __instance = new (function() constructor {
     _set(EASE_IN_EXPO,     function(_z){ return (_z == 0) ? 0 :     power(2,  10*_z - 10) });
     _set(EASE_OUT_EXPO,    function(_z){ return (_z == 1) ? 1 : 1 - power(2, -10*_z     ) });
     _set(EASE_INOUT_EXPO,  function(_z){
-        if (_z == 0.0) { return  0 }
-        if (_z == 1.0) { return  1 }
-        if (_z >= 0.5) { return (2 - power(2, -20*_z + 10))/2 }
-                         return      power(2,  20*_z - 10) /2 });
+        if (_z == 0.0){ return  0 }
+        if (_z == 1.0){ return  1 }
+        if (_z >= 0.5){ return (2 - power(2, -20*_z + 10))/2 }
+                        return      power(2,  20*_z - 10) /2 });
 
     __bounce = _set(EASE_OUT_BOUNCE, function(_z){
              if (_z < 1.0/2.75){                     return 7.5625*_z*_z            }
@@ -63,38 +63,38 @@ function __easings(){ static __instance = new (function() constructor {
         if (_z < 0.5) return (1 - __bounce(1 -  2*_z))/2
                       return (1 + __bounce(2*_z -  1))/2 });
     
-    _set(EASE_IN_BOUNCE, function(_z){ return 1 - __out_bounce(1 - _z) });
+    _set(EASE_IN_BOUNCE, function(_z){ return 1 - __bounce(1 - _z) });
 
     _set(EASE_IN_CIRC,    function(_z){ return 1 - __sqrt(1 - power( _z,      2)) });
     _set(EASE_OUT_CIRC,   function(_z){ return     __sqrt(1 - power((_z - 1), 2)) });
     _set(EASE_INOUT_CIRC, function(_z){
-        if (_z >= 0.5) { return (1 + __sqrt(1 - power(-2*_z + 2, 2)))/2 }
-                         return (1 - __sqrt(1 - power( 2*_z,     2)))/2 });
+        if (_z >= 0.5){ return (1 + __sqrt(1 - power(-2*_z + 2, 2)))/2 }
+                        return (1 - __sqrt(1 - power( 2*_z,     2)))/2 });
 
     _set(EASE_IN_BACK,    function(_z){ return     2.70158*power(_z,     3) - 1.70158*power(_z,     2) });
     _set(EASE_OUT_BACK,   function(_z){ return 1 + 2.70158*power(_z - 1, 3) + 1.70158*power(_z - 1, 2) });
     _set(EASE_INOUT_BACK, function(_z){
-        if (_z >= 0.5) { return (power(2*_z - 2, 2)*(3.5949095*(_z*2 - 2) + 2.5949095) + 2)/2 }
-                         return (power(2*_z,     2)*(3.5949095*(_z*2    ) - 2.5949095)    )/2 });
+        if (_z >= 0.5){ return (power(2*_z - 2, 2)*(3.5949095*(_z*2 - 2) + 2.5949095) + 2)/2 }
+                        return (power(2*_z,     2)*(3.5949095*(_z*2    ) - 2.5949095)    )/2 });
 
     _set(EASE_IN_ELASTIC, function(_z){
-    	static __c = 2*pi/3;
-        if (_z == 0.0) { return 0 }
-        if (_z == 1.0) { return 1 }
+        static __c = 2*pi/3;
+        if (_z == 0.0){ return 0 }
+        if (_z == 1.0){ return 1 }
         return -power(2, 10*_z - 10)*sin((_z*10 - 10.75)*__c) });
 
     _set(EASE_OUT_ELASTIC, function(_z){
-    	static __c = 2*pi/3;
-        if (_z == 0.0) { return 0 }
-        if (_z == 1.0) { return 1 }
+        static __c = 2*pi/3;
+        if (_z == 0.0){ return 0 }
+        if (_z == 1.0){ return 1 }
         return power(2, -10*_z) * sin((_z*10 - 0.75)*__c) + 1 });        
 
     _set(EASE_INOUT_ELASTIC, function(_z){
-    	static __c = 2*pi/4.5;
-        if (_z == 0.0) { return 0 }
-        if (_z == 1.0) { return 1 }
-        if (_z >= 0.5) { return   power(2, -20*_z + 10)*sin((20*_z - 11.125)*__c) /2 + 1 }
-                         return -(power(2,  20*_z - 10)*sin((20*_z - 11.125)*__c))/2     });
+        static __c = 2*pi/4.5;
+        if (_z == 0.0){ return 0 }
+        if (_z == 1.0){ return 1 }
+        if (_z >= 0.5){ return   power(2, -20*_z + 10)*sin((20*_z - 11.125)*__c) /2 + 1 }
+                        return -(power(2,  20*_z - 10)*sin((20*_z - 11.125)*__c))/2     });
        
     _set(EASE_SMOOTHESTSTEP, function(_z){ return -20*power(_z, 7) + 70*power(_z, 6) - 84*power(_z, 5) + 35*power(_z, 4) });
     _set(EASE_SMOOTHERSTEP,  function(_z){ return _z*_z*_z*(_z*(_z*6 - 15) + 10) });
@@ -102,6 +102,7 @@ function __easings(){ static __instance = new (function() constructor {
 
 })(); return __instance }
 
+#macro __EASE_NONE         "none"
 #macro EASE_LINEAR         "linear"
 #macro EASE_IN_QUAD        "in quad"
 #macro EASE_IN_CUBIC       "in cubic"
