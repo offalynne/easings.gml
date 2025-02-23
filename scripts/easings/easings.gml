@@ -102,7 +102,7 @@ function __easings(){ static __instance = new (function() constructor {
 
 })(); return __instance }
 
-#macaro __EASE_NONE        "none"
+#macro __EASE_NONE         "none"
 #macro EASE_LINEAR         "linear"
 #macro EASE_IN_QUAD        "in quad"
 #macro EASE_IN_CUBIC       "in cubic"
