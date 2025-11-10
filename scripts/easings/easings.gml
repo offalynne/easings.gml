@@ -54,9 +54,9 @@ function __easings(){ static __instance = new (function() constructor{
                         return      power(2,  20*_z - 10) /2 });
 
     __bounce = _set(EASE_OUT_BOUNCE, function(_z){
-             if (_z < 1.0/2.75){                     return 7.5625*_z*_z            }
-        else if (_z < 2.0/2.75){ _z -= (1.5  /2.75); return 7.5625*_z*_z + 0.75     }
-        else if (_z < 2.5/2.75){ _z -= (2.25 /2.75); return 7.5625*_z*_z + 0.9375   }
+             if (_z < 0.363636){                     return 7.5625*_z*_z            }
+        else if (_z < 0.727272){ _z -= (1.5  /2.75); return 7.5625*_z*_z + 0.75     }
+        else if (_z < 0.909090){ _z -= (2.25 /2.75); return 7.5625*_z*_z + 0.9375   }
                                  _z -= (2.625/2.75); return 7.5625*_z*_z + 0.984375 });
     
     _set(EASE_INOUT_BOUNCE, function(_z){
@@ -137,3 +137,4 @@ function __easings(){ static __instance = new (function() constructor{
 #macro EASE_SMOOTHSTEP     "smoothstep"
 #macro EASE_SMOOTHERSTEP   "smootherstep"
 #macro EASE_SMOOTHESTSTEP  "smootheststep"
+
